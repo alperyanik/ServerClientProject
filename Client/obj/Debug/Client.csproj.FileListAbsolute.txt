@@ -1,0 +1,31 @@
+C:\Users\msı\Desktop\Kriptoloji\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\msı\Desktop\Kriptoloji\Client\obj\Debug\Client.Forms.MainForm.resources
+C:\Users\msı\Desktop\Kriptoloji\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\msı\Desktop\Kriptoloji\Client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\msı\Desktop\Kriptoloji\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\msı\Desktop\Kriptoloji\Client\bin\Debug\Client.exe.config
+C:\Users\msı\Desktop\Kriptoloji\Client\bin\Debug\Client.exe
+C:\Users\msı\Desktop\Kriptoloji\Client\bin\Debug\Client.pdb
+C:\Users\msı\Desktop\Kriptoloji\Client\obj\Debug\Client.exe
+C:\Users\msı\Desktop\Kriptoloji\Client\obj\Debug\Client.pdb
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\bin\Debug\Client.exe.config
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\bin\Debug\Client.exe
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\bin\Debug\Client.pdb
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\obj\Debug\Client.Forms.MainForm.resources
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\obj\Debug\Client.exe
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Client\obj\Debug\Client.pdb
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\obj\Debug\Client.Forms.MainForm.resources
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\obj\Debug\Client.exe
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\obj\Debug\Client.pdb
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\bin\Debug\Client.exe.config
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\bin\Debug\Client.exe
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Client\bin\Debug\Client.pdb
+C:\Users\msı\Desktop\ServerClientProject -\Client\obj\Debug\Client.csproj.AssemblyReference.cache

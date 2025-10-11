@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Client",
+    "\\Client\\Forms",
+    "\\Client\\Logic",
+    "\\Client\\Logic\\Ciphers",
+    "\\Server\\Forms",
+    "\\Server\\Logic",
+    "\\Server\\Logic\\Ciphers"
+  ],
+  "SelectedNode": "\\Client\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}

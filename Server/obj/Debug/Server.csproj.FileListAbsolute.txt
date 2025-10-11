@@ -1,0 +1,50 @@
+C:\Users\msı\Desktop\Kriptoloji\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\msı\Desktop\Kriptoloji\Server\obj\Debug\Server.Forms.MainForm.resources
+C:\Users\msı\Desktop\Kriptoloji\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\msı\Desktop\Kriptoloji\Server\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\msı\Desktop\Kriptoloji\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\msı\Desktop\Kriptoloji\Server\bin\Debug\Server.exe.config
+C:\Users\msı\Desktop\Kriptoloji\Server\bin\Debug\Server.exe
+C:\Users\msı\Desktop\Kriptoloji\Server\bin\Debug\Server.pdb
+C:\Users\msı\Desktop\Kriptoloji\Server\obj\Debug\Server.exe
+C:\Users\msı\Desktop\Kriptoloji\Server\obj\Debug\Server.pdb
+C:\Users\msı\Desktop\ServerClientProject\Server\bin\Debug\Server.exe.config
+C:\Users\msı\Desktop\ServerClientProject\Server\bin\Debug\Server.exe
+C:\Users\msı\Desktop\ServerClientProject\Server\bin\Debug\Server.pdb
+C:\Users\msı\Desktop\ServerClientProject\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\msı\Desktop\ServerClientProject\Server\obj\Debug\Server.Forms.MainForm.resources
+C:\Users\msı\Desktop\ServerClientProject\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\msı\Desktop\ServerClientProject\Server\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\msı\Desktop\ServerClientProject\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\msı\Desktop\ServerClientProject\Server\obj\Debug\Server.exe
+C:\Users\msı\Desktop\ServerClientProject\Server\obj\Debug\Server.pdb
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\bin\Debug\Server.exe.config
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\bin\Debug\Server.exe
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\bin\Debug\Server.pdb
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\obj\Debug\Server.Forms.MainForm.resources
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\obj\Debug\Server.exe
+C:\Users\msı\Desktop\ServerClientProject - Kopya\Server\obj\Debug\Server.pdb
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\obj\Debug\Server.Forms.MainForm.resources
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\obj\Debug\Server.exe
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\obj\Debug\Server.pdb
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\bin\Debug\Server.exe.config
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\bin\Debug\Server.exe
+C:\Users\msı\Desktop\ServerClientProject - Kopya - Kopya\Server\bin\Debug\Server.pdb
+C:\Users\msı\Desktop\ServerClientProject -\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\msı\Desktop\ServerClientProject -\Server\obj\Debug\Server.Forms.MainForm.resources
+C:\Users\msı\Desktop\ServerClientProject -\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\msı\Desktop\ServerClientProject -\Server\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\msı\Desktop\ServerClientProject -\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\msı\Desktop\ServerClientProject -\Server\obj\Debug\Server.exe
+C:\Users\msı\Desktop\ServerClientProject -\Server\obj\Debug\Server.pdb
+C:\Users\msı\Desktop\ServerClientProject -\Server\bin\Debug\Server.exe.config
+C:\Users\msı\Desktop\ServerClientProject -\Server\bin\Debug\Server.exe
+C:\Users\msı\Desktop\ServerClientProject -\Server\bin\Debug\Server.pdb
