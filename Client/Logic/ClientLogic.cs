@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
@@ -13,8 +12,8 @@ namespace Client.Logic
         private NetworkStream stream;
         private readonly RichTextBox logBox;
 
-        public string SelectedCipher { get; set; }
-        public string CipherKey { get; set; } 
+        public string SelectedCipher { get; set; } = "Sezar";
+        public string CipherKey { get; set; } = "3";
         public string IP { get; set; }
         public int Port { get; set; }
 
@@ -48,10 +47,7 @@ namespace Client.Logic
                 client?.Close();
                 LogMessage("Bağlantı sonlandırıldı.");
             }
-            catch (Exception ex)
-            {
-                LogMessage("Bağlantı sonlandırma hatası: " + ex.Message);
-            }
+            catch { }
         }
 
         public void SendMessage(string message)
@@ -62,16 +58,26 @@ namespace Client.Logic
                 return;
             }
 
-            string encrypted = EncryptMessage(message);
-            if (encrypted == null)
+            string encryptedMsg = EncryptMessage(message);
+
+            if (encryptedMsg == null)
             {
-                LogMessage("Şifreleme başarısız.");
+                LogMessage("Şifreleme başarısız, mesaj gönderilmedi.");
                 return;
             }
 
-            byte[] data = Encoding.UTF8.GetBytes(encrypted);
-            stream.Write(data, 0, data.Length);
-            LogMessage($"Mesaj gönderildi ({SelectedCipher}): {encrypted}");
+            string packet = $"TEXT|{SelectedCipher}|{CipherKey}|{encryptedMsg}";
+
+            try
+            {
+                byte[] data = Encoding.UTF8.GetBytes(packet);
+                stream.Write(data, 0, data.Length);
+                LogMessage($"Gönderildi ({SelectedCipher}): {encryptedMsg}");
+            }
+            catch (Exception ex)
+            {
+                LogMessage("Gönderme hatası: " + ex.Message);
+            }
         }
 
         private string EncryptMessage(string plainText)
@@ -81,34 +87,74 @@ namespace Client.Logic
                 switch (SelectedCipher)
                 {
                     case "Sezar":
-                        if (int.TryParse(CipherKey, out int shift))
-                            return CaesarCipher.Encrypt(plainText, shift);
+                        if (int.TryParse(CipherKey, out int sShift))
+                        {
+                            return CaesarCipher.Encrypt(plainText, sShift);
+                        }
                         else
-                            LogMessage("Sezar için geçerli bir sayı anahtarı girin.");
-                        break;
+                        {
+                            LogMessage("Hata: Sezar için anahtar bir SAYI olmalıdır.");
+                            return null;
+                        }
 
                     case "Vigenere":
                         if (!string.IsNullOrWhiteSpace(CipherKey))
+                        {
                             return VigenereCipher.Encrypt(plainText, CipherKey);
+                        }
                         else
-                            LogMessage("Vigenere için anahtar boş olamaz.");
-                        break;
+                        {
+                            LogMessage("Hata: Vigenere için anahtar boş olamaz.");
+                            return null;
+                        }
+
+                    case "Substitution":
+                        if (CipherKey.Length == 26)
+                        {
+                            return SubstitutionCipher.Encrypt(plainText, CipherKey);
+                        }
+                        else
+                        {
+                            LogMessage("Hata: Substitution için anahtar 26 harfli olmalıdır (Örn: QWERTY...).");
+                            return null;
+                        }
+
+                    case "Affine":
+                        string[] parts = CipherKey.Split(',');
+                        if (parts.Length == 2 && int.TryParse(parts[0], out int a) && int.TryParse(parts[1], out int b))
+                        {
+                            return AffineCipher.Encrypt(plainText, a, b);
+                        }
+                        else
+                        {
+                            LogMessage("Hata: Affine anahtarı 'a,b' formatında olmalı (Örn: 5,8).");
+                            return null;
+                        }
+
+                    default:
+                        return plainText;
                 }
             }
             catch (Exception ex)
             {
-                LogMessage("Şifreleme hatası: " + ex.Message);
+                LogMessage("Şifreleme Hatası: " + ex.Message);
+                return null;
             }
-
-            return null;
         }
 
         private void LogMessage(string message)
         {
-            logBox.Invoke(new Action(() =>
+            if (logBox.IsDisposed) return;
+
+            if (logBox.InvokeRequired)
+            {
+                logBox.Invoke(new Action(() => LogMessage(message)));
+            }
+            else
             {
                 logBox.AppendText($"[{DateTime.Now:HH:mm:ss}] {message}\n");
-            }));
+                logBox.ScrollToCaret();
+            }
         }
     }
 }

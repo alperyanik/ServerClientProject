@@ -11,9 +11,9 @@ namespace Client.Forms
 
         public MainForm()
         {
-            InitializeComponent(); 
+            InitializeComponent();
 
-            cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere" });
+            cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere", "Substitution", "Affine" });
             cmbCipher.SelectedIndex = 0;
 
             clientLogic = new ClientLogic(rtbMessages);
@@ -43,7 +43,7 @@ namespace Client.Forms
             string cipher = cmbCipher.SelectedItem.ToString();
             string key = txtKey.Text;
 
-           
+
             if (cipher == "Sezar" && !int.TryParse(key, out _))
             {
                 MessageBox.Show("⚠️ Sezar şifrelemesi için sadece SAYISAL anahtar giriniz!",
@@ -70,24 +70,22 @@ namespace Client.Forms
             clientLogic.SendMessage(txtMessage.Text);
         }
 
-        
+
         private void cmbCipher_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            if (clientLogic == null)
-                return;
+            if (clientLogic == null) return;
 
             string selected = cmbCipher.SelectedItem.ToString();
 
             if (selected == "Sezar")
-            {
-                txtKey.Text = "";
-                txtKey.Text = "Anahtar (ör: 3)";
-            }
+                txtKey.Text = "Anahtar (Sayı)";
             else if (selected == "Vigenere")
+                txtKey.Text = "Anahtar (Kelime)";
+            else if (selected == "Substitution")
+                txtKey.Text = "26 Harfli Alfabe Sırası";
+            else if (selected == "Affine")
             {
-                txtKey.Text = "";
-                txtKey.Text = "Anahtar (ör: KEY)";
+                txtKey.Text = "a,b (Örn: 5,8)";
             }
 
             clientLogic.SelectedCipher = selected;
