@@ -131,6 +131,25 @@ namespace Client.Logic
                             return null;
                         }
 
+
+                    case "Playfair":
+                       
+                        if (string.IsNullOrWhiteSpace(CipherKey)) { LogMessage("Hata: Anahtar boş olamaz."); return null; }
+                        return PlayfairCipher.Cipher(plainText, CipherKey, true);
+
+                    case "RailFence":
+                        if (int.TryParse(CipherKey, out int rails) && rails > 1)
+                        {
+                            return RailFenceCipher.Encrypt(plainText, rails);
+                        }
+                        else
+                        {
+                            LogMessage("Hata: RailFence için anahtar 1'den büyük bir SAYI olmalıdır (Örn: 3).");
+                            return null;
+                        }
+
+
+
                     default:
                         return plainText;
                 }

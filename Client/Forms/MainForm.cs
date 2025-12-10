@@ -13,7 +13,7 @@ namespace Client.Forms
         {
             InitializeComponent();
 
-            cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere", "Substitution", "Affine" });
+            cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere", "Substitution", "Affine","Playfair", "RailFence" });
             cmbCipher.SelectedIndex = 0;
 
             clientLogic = new ClientLogic(rtbMessages);
@@ -86,6 +86,15 @@ namespace Client.Forms
             else if (selected == "Affine")
             {
                 txtKey.Text = "a,b (Örn: 5,8)";
+            }
+            else if (selected == "Playfair")
+            {
+                txtKey.Text = "Anahtar Kelime (Örn: SECRET)";
+            }
+
+            else if (selected == "RailFence")
+            {
+                txtKey.Text = "Ray Sayısı (Örn: 3)";
             }
 
             clientLogic.SelectedCipher = selected;

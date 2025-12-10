@@ -121,6 +121,15 @@ namespace Server.Logic
                         }
                         return "[Hata: Affine anahtarı bozuk]";
 
+                    case "Playfair":
+                        
+                        return PlayfairCipher.Cipher(input, key, false);
+
+                    case "RailFence":
+                        if (int.TryParse(key, out int rKey))
+                            return RailFenceCipher.Decrypt(input, rKey);
+                        return "[Hata: RailFence anahtarı sayı olmalı]";
+
                     default:
                         return input + " (Bilinmeyen Algoritma)";
                 }
