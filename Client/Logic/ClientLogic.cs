@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using Client.Logic.Ciphers;
 
+
 namespace Client.Logic
 {
     public class ClientLogic
@@ -133,7 +134,7 @@ namespace Client.Logic
 
 
                     case "Playfair":
-                       
+
                         if (string.IsNullOrWhiteSpace(CipherKey)) { LogMessage("Hata: Anahtar boş olamaz."); return null; }
                         return PlayfairCipher.Cipher(plainText, CipherKey, true);
 
@@ -147,6 +148,54 @@ namespace Client.Logic
                             LogMessage("Hata: RailFence için anahtar 1'den büyük bir SAYI olmalıdır (Örn: 3).");
                             return null;
                         }
+
+                    case "Route":
+                        if (int.TryParse(CipherKey, out int rCols) && rCols > 0)
+                        {
+                            return RouteCipher.Encrypt(plainText, rCols);
+                        }
+                        else
+                        {
+                            LogMessage("Hata: Route Cipher için anahtar pozitif bir SAYI olmalıdır.");
+                            return null;
+                        }
+
+                    case "Columnar":
+                        if (!string.IsNullOrWhiteSpace(CipherKey))
+                        {
+                            return ColumnarTranspositionCipher.Encrypt(plainText, CipherKey);
+                        }
+                        else
+                        {
+                            LogMessage("Hata: Columnar Transposition için bir anahtar kelime veya sayı girmelisiniz.");
+                            return null;
+                        }
+
+                    case "Polybius":
+                        
+                        if (!string.IsNullOrEmpty(CipherKey))
+                        {
+                            foreach (char c in CipherKey)
+                            {
+                                if (char.IsDigit(c))
+                                {
+                                    LogMessage("Hata: Polybius anahtarı SADECE HARF içermelidir (Rakam giremezsiniz).");
+                                    return null;
+                                }
+                            }
+                        }
+
+                        
+                        foreach (char c in plainText)
+                        {
+                            if (char.IsDigit(c))
+                            {
+                                LogMessage("Hata: Polybius şifrelemesi yapılacak METİN içinde sayı olamaz.");
+                                return null;
+                            }
+                        }
+
+                        return PolybiusCipher.Encrypt(plainText, CipherKey ?? "");
 
 
 

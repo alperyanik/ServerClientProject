@@ -12,7 +12,7 @@ namespace Client.Logic.Ciphers
                 if (char.IsLetter(c))
                 {
                     char baseChar = char.IsUpper(c) ? 'A' : 'a';
-                    result += (char)((((c - baseChar) + key) % 26) + baseChar);
+                    result += (char)((((c - baseChar) + key) % 26) + baseChar); 
                 }
                 else
                 {

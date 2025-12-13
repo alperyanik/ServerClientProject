@@ -130,6 +130,17 @@ namespace Server.Logic
                             return RailFenceCipher.Decrypt(input, rKey);
                         return "[Hata: RailFence anahtarı sayı olmalı]";
 
+                    case "Route":
+                        if (int.TryParse(key, out int routeKey))
+                            return RouteCipher.Decrypt(input, routeKey);
+                        return "[Hata: Route anahtarı sayı olmalı]";
+
+                    case "Columnar":
+                        return ColumnarTranspositionCipher.Decrypt(input, key);
+
+                    case "Polybius":
+                        return PolybiusCipher.Decrypt(input, key ?? "");
+
                     default:
                         return input + " (Bilinmeyen Algoritma)";
                 }
