@@ -141,6 +141,9 @@ namespace Server.Logic
                     case "Polybius":
                         return PolybiusCipher.Decrypt(input, key ?? "");
 
+                    case "Hill":
+                        return HillCipher.Decrypt(input, key);
+
                     default:
                         return input + " (Bilinmeyen Algoritma)";
                 }

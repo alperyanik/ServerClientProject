@@ -13,7 +13,7 @@ namespace Client.Forms
         {
             InitializeComponent();
 
-            cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere", "Substitution", "Affine","Playfair", "RailFence" , "Route" , "Columnar" , "Polybius"});
+            cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere", "Substitution", "Affine","Playfair", "RailFence" , "Route" , "Columnar" , "Polybius" , "Hill"});
             cmbCipher.SelectedIndex = 0;
 
             clientLogic = new ClientLogic(rtbMessages);
@@ -111,6 +111,13 @@ namespace Client.Forms
             {
                 txtKey.Text = "Anahtar Kelime (İsteğe Bağlı)";
             }
+
+            else if (selected == "Hill")
+            {
+                txtKey.Text = "Tam Kare Uzunlukta Kelime (Örn: DORT, KALEMLER)";
+            }
+
+
 
             clientLogic.SelectedCipher = selected;
         }

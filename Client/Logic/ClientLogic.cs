@@ -134,8 +134,33 @@ namespace Client.Logic
 
 
                     case "Playfair":
+                        if (string.IsNullOrWhiteSpace(CipherKey))
+                        {
+                            LogMessage("Hata: Playfair için anahtar boş olamaz.");
+                            return null;
+                        }
 
-                        if (string.IsNullOrWhiteSpace(CipherKey)) { LogMessage("Hata: Anahtar boş olamaz."); return null; }
+                        
+                        foreach (char c in plainText)
+                        {
+                            
+                            if (!char.IsLetter(c))
+                            {
+                                LogMessage($"Hata: Playfair mesajı sadece HARF içermelidir. '{c}' karakteri geçersizdir. (Rakam, sembol veya boşluk kullanmayınız.)");
+                                return null;
+                            }
+                        }
+
+                        
+                        foreach (char c in CipherKey)
+                        {
+                            if (!char.IsLetter(c))
+                            {
+                                LogMessage("Hata: Playfair anahtarı sadece HARF içermelidir.");
+                                return null;
+                            }
+                        }
+
                         return PlayfairCipher.Cipher(plainText, CipherKey, true);
 
                     case "RailFence":
@@ -197,7 +222,33 @@ namespace Client.Logic
 
                         return PolybiusCipher.Encrypt(plainText, CipherKey ?? "");
 
+                    case "Hill":
+                        
+                        double sqrt = Math.Sqrt(CipherKey.Length);
+                        if (CipherKey.Length < 4 || sqrt % 1 != 0)
+                        {
+                            LogMessage($"Hata: Hill anahtarı {CipherKey.Length} harf olamaz. Bir sayının karesi kadar olmalıdır (4, 9, 16, 25...).");
+                            return null;
+                        }
 
+                     
+                        foreach (char c in CipherKey)
+                        {
+                            if (!char.IsLetter(c))
+                            {
+                                LogMessage("Hata: Anahtar sadece harflerden oluşmalıdır.");
+                                return null;
+                            }
+                        }
+
+                        
+                        if (!HillCipher.IsKeyValid(CipherKey))
+                        {
+                            LogMessage("Hata: Girdiğiniz anahtarın matematiksel tersi yoktur (Determinant geçersiz).");
+                            return null;
+                        }
+
+                        return HillCipher.Encrypt(plainText, CipherKey);
 
                     default:
                         return plainText;

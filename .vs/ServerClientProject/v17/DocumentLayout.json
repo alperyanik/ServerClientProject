@@ -5,6 +5,42 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\ClientLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Client\\Logic\\ClientLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Client\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\PlayfairCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Logic\\Ciphers\\PlayfairCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Forms\\MainForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Client\\Forms\\MainForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\Ciphers\\HillCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Client\\Logic\\Ciphers\\HillCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\HillCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Logic\\Ciphers\\HillCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\ServerLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Logic\\ServerLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\Ciphers\\PigpenCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Client\\Logic\\Ciphers\\PigpenCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\PigpenCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Logic\\Ciphers\\PigpenCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,13 +70,121 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayfairCipher.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\PlayfairCipher.cs",
+              "RelativeDocumentMoniker": "Server\\Logic\\Ciphers\\PlayfairCipher.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\PlayfairCipher.cs",
+              "RelativeToolTip": "Server\\Logic\\Ciphers\\PlayfairCipher.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAADwv1sAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T17:07:06.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HillCipher.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\Ciphers\\HillCipher.cs",
+              "RelativeDocumentMoniker": "Client\\Logic\\Ciphers\\HillCipher.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\Ciphers\\HillCipher.cs",
+              "RelativeToolTip": "Client\\Logic\\Ciphers\\HillCipher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T18:41:09.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HillCipher.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\HillCipher.cs",
+              "RelativeDocumentMoniker": "Server\\Logic\\Ciphers\\HillCipher.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\HillCipher.cs",
+              "RelativeToolTip": "Server\\Logic\\Ciphers\\HillCipher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T18:41:01.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ServerLogic.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\ServerLogic.cs",
+              "RelativeDocumentMoniker": "Server\\Logic\\ServerLogic.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\ServerLogic.cs",
+              "RelativeToolTip": "Server\\Logic\\ServerLogic.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAI0AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T18:37:22.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Program.cs",
+              "RelativeDocumentMoniker": "Client\\Program.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Program.cs",
+              "RelativeToolTip": "Client\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T18:16:44.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClientLogic.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\ClientLogic.cs",
+              "RelativeDocumentMoniker": "Client\\Logic\\ClientLogic.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\ClientLogic.cs",
+              "RelativeToolTip": "Client\\Logic\\ClientLogic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T18:13:22.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "Client\\Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Forms\\MainForm.cs",
+              "RelativeToolTip": "Client\\Forms\\MainForm.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAkwHYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T18:12:37.747Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PigpenCipher.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\Ciphers\\PigpenCipher.cs",
+              "RelativeDocumentMoniker": "Client\\Logic\\Ciphers\\PigpenCipher.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Client\\Logic\\Ciphers\\PigpenCipher.cs",
+              "RelativeToolTip": "Client\\Logic\\Ciphers\\PigpenCipher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T18:12:17.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PigpenCipher.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\PigpenCipher.cs",
+              "RelativeDocumentMoniker": "Server\\Logic\\Ciphers\\PigpenCipher.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\PigpenCipher.cs",
+              "RelativeToolTip": "Server\\Logic\\Ciphers\\PigpenCipher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T18:11:46.97Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Program.cs",
               "RelativeDocumentMoniker": "Server\\Program.cs",
               "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Program.cs",
               "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-13T10:54:10.092Z",
               "EditorCaption": ""
