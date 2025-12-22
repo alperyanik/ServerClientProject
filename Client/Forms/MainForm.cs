@@ -13,7 +13,7 @@ namespace Client.Forms
         {
             InitializeComponent();
 
-            cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere", "Substitution", "Affine","Playfair", "RailFence" , "Route" , "Columnar" , "Polybius" , "Hill"});
+            cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere", "Substitution", "Affine","Playfair", "RailFence" , "Route" , "Columnar" , "Polybius" , "Hill" ,"AES" , "DES"});
             cmbCipher.SelectedIndex = 0;
 
             clientLogic = new ClientLogic(rtbMessages);
@@ -77,48 +77,40 @@ namespace Client.Forms
 
             string selected = cmbCipher.SelectedItem.ToString();
 
-            if (selected == "Sezar")
-                txtKey.Text = "Anahtar (Sayı)";
-            else if (selected == "Vigenere")
-                txtKey.Text = "Anahtar (Kelime)";
-            else if (selected == "Substitution")
-                txtKey.Text = "26 Harfli Alfabe Sırası";
-            else if (selected == "Affine")
+            // 1. AES ve DES için Özel Kontrol (Kilitli Kutu)
+            if (selected == "AES" || selected == "DES")
             {
-                txtKey.Text = "a,b (Örn: 5,8)";
+                txtKey.Text = "Otomatik (RSA Korumalı)";
+                txtKey.Enabled = false; // Kullanıcı müdahale edemez
             }
-            else if (selected == "Playfair")
+            else
             {
-                txtKey.Text = "Anahtar Kelime (Örn: SECRET)";
-            }
+                // 2. Diğer Algoritmalar (Kilidi Aç ve İpucunu Göster)
+                txtKey.Enabled = true;
 
-            else if (selected == "RailFence")
-            {
-                txtKey.Text = "Ray Sayısı (Örn: 3)";
-            }
-
-            else if (selected == "Route")
-            {
-                txtKey.Text = "Sütun Sayısı (Örn: 4)";
-            }
-
-            else if (selected == "Columnar")
-            {
-                txtKey.Text = "Anahtar Kelime veya Sayı (Örn: KALEM veya 123)";
-            }
-
-            else if (selected == "Polybius")
-            {
-                txtKey.Text = "Anahtar Kelime (İsteğe Bağlı)";
+                if (selected == "Sezar")
+                    txtKey.Text = "Anahtar (Sayı)";
+                else if (selected == "Vigenere")
+                    txtKey.Text = "Anahtar (Kelime)";
+                else if (selected == "Substitution")
+                    txtKey.Text = "26 Harfli Alfabe Sırası";
+                else if (selected == "Affine")
+                    txtKey.Text = "a,b (Örn: 5,8)";
+                else if (selected == "Playfair")
+                    txtKey.Text = "Anahtar Kelime (Örn: SECRET)";
+                else if (selected == "RailFence")
+                    txtKey.Text = "Ray Sayısı (Örn: 3)";
+                else if (selected == "Route")
+                    txtKey.Text = "Sütun Sayısı (Örn: 4)";
+                else if (selected == "Columnar")
+                    txtKey.Text = "Anahtar Kelime veya Sayı (Örn: KALEM veya 123)";
+                else if (selected == "Polybius")
+                    txtKey.Text = "Anahtar Kelime (İsteğe Bağlı)";
+                else if (selected == "Hill")
+                    txtKey.Text = "Tam Kare Uzunlukta Kelime (Örn: DORT, KALEMLER)";
             }
 
-            else if (selected == "Hill")
-            {
-                txtKey.Text = "Tam Kare Uzunlukta Kelime (Örn: DORT, KALEMLER)";
-            }
-
-
-
+            // Seçimi Logic katmanına bildir
             clientLogic.SelectedCipher = selected;
         }
 
