@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Server.Logic.Ciphers; // Yukarıda oluşturduğumuz sınıfları kullanır
+using Server.Logic.Ciphers;
 
 namespace Server.Logic
 {
@@ -16,13 +16,12 @@ namespace Server.Logic
         private readonly object clientLock = new object();
         private readonly RichTextBox rtb;
 
-        // RSA Yöneticisi: Sunucu başladığında bir çift anahtar üretir.
         private RSACipher rsaCipher;
 
         public ServerLogic(RichTextBox rtbMessages)
         {
             rtb = rtbMessages;
-            rsaCipher = new RSACipher(); // Anahtarları oluştur
+            rsaCipher = new RSACipher();
         }
 
         public void StartServer(string ip, int port)
@@ -42,7 +41,6 @@ namespace Server.Logic
                         lock (clientLock) clients.Add(client);
                         AppendMessage("[+] Yeni kullanıcı bağlandı!");
 
-                        // Her kullanıcı için ayrı bir thread başlat
                         Thread clientThread = new Thread(() => HandleClient(client));
                         clientThread.IsBackground = true;
                         clientThread.Start();
@@ -59,12 +57,8 @@ namespace Server.Logic
 
         private void HandleClient(TcpClient client)
         {
-            // --- SESSION (OTURUM) BİLGİLERİ ---
-            // Bu değişkenler sadece BU istemciye özeldir.
-            // İstemci AES/DES anahtarını gönderdiğinde burada saklanacak.
             byte[] sessionKey = null;
             string sessionAlgo = "";
-            // ----------------------------------
 
             try
             {
@@ -76,10 +70,8 @@ namespace Server.Logic
                 {
                     string data = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
-                    // SENARYO 1: İstemci Public Key İstiyor
                     if (data.StartsWith("REQ_PUB_KEY|"))
                     {
-                        // İstemciye şu formatta cevap veriyoruz: COMMAND|PUBLIC_KEY|<XML_DATA>
                         string pubKeyXml = rsaCipher.GetPublicKey();
                         string response = "COMMAND|PUBLIC_KEY|" + pubKeyXml;
 
@@ -90,10 +82,8 @@ namespace Server.Logic
                         continue;
                     }
 
-                    // SENARYO 2: İstemci AES/DES Anahtarı Gönderiyor (Handshake)
                     if (data.StartsWith("KEY_EXCHANGE|"))
                     {
-                        // Format: KEY_EXCHANGE | AES | <Şifreli_Anahtar_Base64>
                         try
                         {
                             string[] parts = data.Split('|');
@@ -101,7 +91,6 @@ namespace Server.Logic
                             string encryptedKeyBase64 = parts[2];
                             byte[] encryptedBytes = Convert.FromBase64String(encryptedKeyBase64);
 
-                            // RSA Private Key ile çözüyoruz
                             byte[] decryptedKey = rsaCipher.Decrypt(encryptedBytes);
 
                             if (decryptedKey != null)
@@ -122,21 +111,22 @@ namespace Server.Logic
                         continue;
                     }
 
-                    // SENARYO 3: Normal Şifreli Mesaj
                     if (data.StartsWith("TEXT|"))
                     {
                         string[] parts = data.Split('|');
-                        if (parts.Length >= 4)
+                        if (parts.Length >= 5)
                         {
                             string cipherType = parts[1];
                             string key = parts[2];
-                            string encryptedMsg = string.Join("|", parts, 3, parts.Length - 3);
+                            string mode = parts[3];
+                            string encryptedMsg = string.Join("|", parts, 4, parts.Length - 4);
+                            bool isManual = (mode == "MANUAL");
 
-                            // Mesajı çöz (Session bilgilerini de gönderiyoruz)
-                            string decrypted = DecryptMessage(encryptedMsg, cipherType, key, sessionKey, sessionAlgo);
+                            string decrypted = DecryptMessage(encryptedMsg, cipherType, key, sessionKey, sessionAlgo, isManual);
 
+                            string modeLabel = isManual ? "Manuel" : "Kütüphane";
                             AppendMessage($"--------------------------------------------------");
-                            AppendMessage($"[Gelen] {cipherType}");
+                            AppendMessage($"[Gelen] {cipherType} ({modeLabel})");
                             AppendMessage($"🔒 {encryptedMsg}");
                             AppendMessage($"🔓 {decrypted}");
                             AppendMessage($"--------------------------------------------------");
@@ -155,7 +145,7 @@ namespace Server.Logic
             }
         }
 
-        private string DecryptMessage(string input, string cipherType, string key, byte[] sessionKey, string sessionAlgo)
+        private string DecryptMessage(string input, string cipherType, string key, byte[] sessionKey, string sessionAlgo, bool isManual = false)
         {
             try
             {
@@ -182,17 +172,21 @@ namespace Server.Logic
                     case "Polybius": return PolybiusCipher.Decrypt(input, key ?? "");
                     case "Hill": return HillCipher.Decrypt(input, key);
 
-                    // --- YENİ EKLENEN KISIMLAR ---
                     case "AES":
                         if (sessionKey == null || sessionAlgo != "AES")
                             return "[Hata: Sunucuda AES anahtarı yok. El sıkışma yapılmadı.]";
-                        return AESCipher.Decrypt(input, sessionKey);
+                        if (isManual)
+                            return ManualAESCipher.Decrypt(input, sessionKey);
+                        else
+                            return AESCipher.Decrypt(input, sessionKey);
 
                     case "DES":
                         if (sessionKey == null || sessionAlgo != "DES")
                             return "[Hata: Sunucuda DES anahtarı yok. El sıkışma yapılmadı.]";
-                        return DESCipher.Decrypt(input, sessionKey);
-                    // -----------------------------
+                        if (isManual)
+                            return ManualDESCipher.Decrypt(input, sessionKey);
+                        else
+                            return DESCipher.Decrypt(input, sessionKey);
 
                     default: return input + " (Bilinmeyen Algoritma)";
                 }

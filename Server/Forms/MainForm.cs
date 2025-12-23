@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Server.Logic;
 
@@ -14,6 +15,13 @@ namespace Server.Forms
             InitializeComponent();
             server = new ServerLogic(rtbMessages);
             btnStop.Enabled = false;
+            
+            rtbMessages.AppendText("╔══════════════════════════════════════════════════════════════╗\n");
+            rtbMessages.AppendText("║  🖥️ Şifreli İletişim Sunucusu v2.0                           ║\n");
+            rtbMessages.AppendText("║  AES-128 | DES | RSA Hibrit Şifreleme                        ║\n");
+            rtbMessages.AppendText("║  Kütüphaneli ve Manuel Şifre Çözme Destekli                  ║\n");
+            rtbMessages.AppendText("╚══════════════════════════════════════════════════════════════╝\n\n");
+            rtbMessages.AppendText("ℹ️ Sunucuyu başlatmak için yukarıdaki butona tıklayın.\n");
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -21,7 +29,7 @@ namespace Server.Forms
             string ip = txtIP.Text.Trim();
             if (!int.TryParse(txtPort.Text.Trim(), out int port))
             {
-                MessageBox.Show("Port numarası geçersiz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("⚠️ Port numarası geçersiz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -31,11 +39,13 @@ namespace Server.Forms
                 isRunning = true;
                 btnStart.Enabled = false;
                 btnStop.Enabled = true;
-                UpdateStatus($"Sunucu başlatıldı ({ip}:{port})");
+                UpdateStatus($"▶️ Çalışıyor: {ip}:{port}", true);
+                rtbMessages.AppendText($"\n✅ Sunucu başlatıldı! ({ip}:{port})\n");
+                rtbMessages.AppendText("📡 İstemci bekleniyor...\n\n");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Server başlatılamadı!\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("❌ Sunucu başlatılamadı!\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -49,17 +59,32 @@ namespace Server.Forms
                 isRunning = false;
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
-                UpdateStatus("Sunucu durduruldu.");
+                UpdateStatus("⏹️ Durum: Durduruldu", false);
+                rtbMessages.AppendText("\n⏹️ Sunucu durduruldu.\n");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Server durdurulurken hata oluştu!\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("❌ Sunucu durdurulurken hata oluştu!\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void UpdateStatus(string msg)
+        private void UpdateStatus(string msg, bool running)
         {
-            lblStatus.Text = "Durum: " + msg;
+            lblStatusText.Text = msg;
+            if (running)
+            {
+                lblStatusText.ForeColor = Color.FromArgb(40, 167, 69);
+            }
+            else
+            {
+                lblStatusText.ForeColor = Color.FromArgb(255, 165, 0);
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            rtbMessages.Clear();
+            rtbMessages.AppendText("📋 Log temizlendi.\n");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -69,3 +94,4 @@ namespace Server.Forms
         }
     }
 }
+

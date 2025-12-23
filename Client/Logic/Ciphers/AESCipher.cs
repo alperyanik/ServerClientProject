@@ -33,7 +33,7 @@ namespace Client.Logic.Ciphers
         {
             using (Aes aes = Aes.Create())
             {
-                aes.KeySize = 128; // 128 bit
+                aes.KeySize = 128;
                 aes.GenerateKey();
                 return aes.Key;
             }

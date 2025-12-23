@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\msı\\Desktop\\ServerClientProject -\\Server\\Server.csproj": {}
+    "C:\\Users\\msı\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\msı\\Desktop\\ServerClientProject -\\Server\\Server.csproj": {
+    "C:\\Users\\msı\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\msı\\Desktop\\ServerClientProject -\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\msı\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "C:\\Users\\msı\\Desktop\\ServerClientProject -\\Server\\Server.csproj",
+        "projectPath": "C:\\Users\\msı\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Server.csproj",
         "packagesPath": "C:\\Users\\msı\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\msı\\Desktop\\ServerClientProject -\\Server\\obj\\",
+        "outputPath": "C:\\Users\\msı\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

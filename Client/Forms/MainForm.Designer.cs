@@ -2,9 +2,7 @@
 {
     partial class MainForm
     {
-
         private System.ComponentModel.IContainer components = null;
-
 
         protected override void Dispose(bool disposing)
         {
@@ -22,110 +20,286 @@
             this.txtIp = new System.Windows.Forms.TextBox();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.cmbCipher = new System.Windows.Forms.ComboBox();
+            this.cmbMode = new System.Windows.Forms.ComboBox();
             this.txtKey = new System.Windows.Forms.TextBox();
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnDisconnect = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.rtbMessages = new System.Windows.Forms.RichTextBox();
+            this.lblMode = new System.Windows.Forms.Label();
+            this.grpConnection = new System.Windows.Forms.GroupBox();
+            this.grpEncryption = new System.Windows.Forms.GroupBox();
+            this.grpMessage = new System.Windows.Forms.GroupBox();
+            this.lblIp = new System.Windows.Forms.Label();
+            this.lblPort = new System.Windows.Forms.Label();
+            this.lblCipher = new System.Windows.Forms.Label();
+            this.lblKey = new System.Windows.Forms.Label();
+            this.pnlStatus = new System.Windows.Forms.Panel();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.picStatus = new System.Windows.Forms.PictureBox();
+            this.btnClear = new System.Windows.Forms.Button();
+
+            this.grpConnection.SuspendLayout();
+            this.grpEncryption.SuspendLayout();
+            this.grpMessage.SuspendLayout();
+            this.pnlStatus.SuspendLayout();
             this.SuspendLayout();
+
+            // 
+            // Form Properties
+            // 
+            this.BackColor = System.Drawing.Color.FromArgb(240, 240, 245);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+
+            // 
+            // pnlStatus - Status Panel (Top)
+            // 
+            this.pnlStatus.BackColor = System.Drawing.Color.FromArgb(45, 45, 48);
+            this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlStatus.Height = 35;
+            this.pnlStatus.Controls.Add(this.lblStatus);
+
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(255, 165, 0);
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblStatus.Location = new System.Drawing.Point(12, 8);
+            this.lblStatus.Text = "🔴 Bağlantı Yok";
+
+            // 
+            // grpConnection - Connection Group
+            // 
+            this.grpConnection.Text = "🌐 Bağlantı Ayarları";
+            this.grpConnection.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.grpConnection.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
+            this.grpConnection.Location = new System.Drawing.Point(12, 45);
+            this.grpConnection.Size = new System.Drawing.Size(340, 85);
+            this.grpConnection.Controls.Add(this.lblIp);
+            this.grpConnection.Controls.Add(this.txtIp);
+            this.grpConnection.Controls.Add(this.lblPort);
+            this.grpConnection.Controls.Add(this.txtPort);
+            this.grpConnection.Controls.Add(this.btnConnect);
+            this.grpConnection.Controls.Add(this.btnDisconnect);
+
+            // 
+            // lblIp
+            // 
+            this.lblIp.AutoSize = true;
+            this.lblIp.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblIp.Location = new System.Drawing.Point(10, 25);
+            this.lblIp.Text = "IP Adresi:";
+
             // 
             // txtIp
             // 
-            this.txtIp.Location = new System.Drawing.Point(12, 12);
-            this.txtIp.Name = "txtIp";
+            this.txtIp.Location = new System.Drawing.Point(10, 45);
             this.txtIp.Size = new System.Drawing.Size(120, 23);
-            this.txtIp.TabIndex = 0;
+            this.txtIp.Font = new System.Drawing.Font("Consolas", 10F);
             this.txtIp.Text = "127.0.0.1";
+            this.txtIp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+
+            // 
+            // lblPort
+            // 
+            this.lblPort.AutoSize = true;
+            this.lblPort.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblPort.Location = new System.Drawing.Point(140, 25);
+            this.lblPort.Text = "Port:";
+
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(138, 12);
-            this.txtPort.Name = "txtPort";
+            this.txtPort.Location = new System.Drawing.Point(140, 45);
             this.txtPort.Size = new System.Drawing.Size(60, 23);
-            this.txtPort.TabIndex = 1;
+            this.txtPort.Font = new System.Drawing.Font("Consolas", 10F);
             this.txtPort.Text = "5000";
+            this.txtPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(210, 43);
+            this.btnConnect.Size = new System.Drawing.Size(60, 27);
+            this.btnConnect.Text = "🔗 Bağlan";
+            this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConnect.BackColor = System.Drawing.Color.FromArgb(40, 167, 69);
+            this.btnConnect.ForeColor = System.Drawing.Color.White;
+            this.btnConnect.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.btnConnect.FlatAppearance.BorderSize = 0;
+            this.btnConnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+
+            // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.Location = new System.Drawing.Point(275, 43);
+            this.btnDisconnect.Size = new System.Drawing.Size(55, 27);
+            this.btnDisconnect.Text = "❌ Kes";
+            this.btnDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDisconnect.BackColor = System.Drawing.Color.FromArgb(220, 53, 69);
+            this.btnDisconnect.ForeColor = System.Drawing.Color.White;
+            this.btnDisconnect.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.btnDisconnect.FlatAppearance.BorderSize = 0;
+            this.btnDisconnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
+
+            // 
+            // grpEncryption - Encryption Group
+            // 
+            this.grpEncryption.Text = "🔐 Şifreleme Ayarları";
+            this.grpEncryption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.grpEncryption.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
+            this.grpEncryption.Location = new System.Drawing.Point(358, 45);
+            this.grpEncryption.Size = new System.Drawing.Size(320, 85);
+            this.grpEncryption.Controls.Add(this.lblCipher);
+            this.grpEncryption.Controls.Add(this.cmbCipher);
+            this.grpEncryption.Controls.Add(this.lblMode);
+            this.grpEncryption.Controls.Add(this.cmbMode);
+
+            // 
+            // lblCipher
+            // 
+            this.lblCipher.AutoSize = true;
+            this.lblCipher.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblCipher.Location = new System.Drawing.Point(10, 25);
+            this.lblCipher.Text = "Algoritma:";
+
             // 
             // cmbCipher
             // 
             this.cmbCipher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCipher.FormattingEnabled = true;
-            this.cmbCipher.Location = new System.Drawing.Point(204, 12);
-            this.cmbCipher.Name = "cmbCipher";
-            this.cmbCipher.Size = new System.Drawing.Size(121, 23);
-            this.cmbCipher.TabIndex = 2;
+            this.cmbCipher.Location = new System.Drawing.Point(10, 45);
+            this.cmbCipher.Size = new System.Drawing.Size(140, 23);
+            this.cmbCipher.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmbCipher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCipher.SelectedIndexChanged += new System.EventHandler(this.cmbCipher_SelectedIndexChanged);
+
+            // 
+            // lblMode
+            // 
+            this.lblMode.AutoSize = true;
+            this.lblMode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblMode.Location = new System.Drawing.Point(160, 25);
+            this.lblMode.Text = "Mod:";
+            this.lblMode.Visible = false;
+
+            // 
+            // cmbMode
+            // 
+            this.cmbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMode.Location = new System.Drawing.Point(160, 45);
+            this.cmbMode.Size = new System.Drawing.Size(145, 23);
+            this.cmbMode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmbMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbMode.Visible = false;
+
+            // 
+            // lblKey
+            // 
+            this.lblKey.AutoSize = true;
+            this.lblKey.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblKey.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
+            this.lblKey.Location = new System.Drawing.Point(12, 135);
+            this.lblKey.Text = "🔑 Anahtar:";
+
             // 
             // txtKey
             // 
-            this.txtKey.Location = new System.Drawing.Point(331, 12);
-            this.txtKey.Name = "txtKey";
-            this.txtKey.Size = new System.Drawing.Size(100, 23);
-            this.txtKey.TabIndex = 3;
-            this.txtKey.Text = "";
+            this.txtKey.Location = new System.Drawing.Point(12, 155);
+            this.txtKey.Size = new System.Drawing.Size(666, 25);
+            this.txtKey.Font = new System.Drawing.Font("Consolas", 10F);
+            this.txtKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKey.BackColor = System.Drawing.Color.FromArgb(255, 255, 240);
+
+            // 
+            // grpMessage - Message Group
+            // 
+            this.grpMessage.Text = "💬 Mesaj";
+            this.grpMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.grpMessage.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
+            this.grpMessage.Location = new System.Drawing.Point(12, 185);
+            this.grpMessage.Size = new System.Drawing.Size(666, 75);
+            this.grpMessage.Controls.Add(this.txtMessage);
+            this.grpMessage.Controls.Add(this.btnSend);
+
             // 
             // txtMessage
             // 
-            this.txtMessage.Location = new System.Drawing.Point(12, 50);
-            this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(419, 23);
-            this.txtMessage.TabIndex = 4;
-            // 
-            // btnConnect
-            // 
-            this.btnConnect.Location = new System.Drawing.Point(437, 11);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 24);
-            this.btnConnect.TabIndex = 5;
-            this.btnConnect.Text = "Bağlan";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // btnDisconnect
-            // 
-            this.btnDisconnect.Location = new System.Drawing.Point(518, 11);
-            this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(75, 24);
-            this.btnDisconnect.TabIndex = 6;
-            this.btnDisconnect.Text = "Kes";
-            this.btnDisconnect.UseVisualStyleBackColor = true;
-            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
+            this.txtMessage.Location = new System.Drawing.Point(10, 30);
+            this.txtMessage.Size = new System.Drawing.Size(530, 30);
+            this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(437, 49);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(156, 24);
-            this.btnSend.TabIndex = 7;
-            this.btnSend.Text = "Mesaj Gönder";
-            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Location = new System.Drawing.Point(550, 28);
+            this.btnSend.Size = new System.Drawing.Size(105, 33);
+            this.btnSend.Text = "📤 Gönder";
+            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSend.BackColor = System.Drawing.Color.FromArgb(0, 123, 255);
+            this.btnSend.ForeColor = System.Drawing.Color.White;
+            this.btnSend.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSend.FlatAppearance.BorderSize = 0;
+            this.btnSend.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+
             // 
             // rtbMessages
             // 
-            this.rtbMessages.Location = new System.Drawing.Point(12, 80);
-            this.rtbMessages.Name = "rtbMessages";
-            this.rtbMessages.Size = new System.Drawing.Size(581, 300);
-            this.rtbMessages.TabIndex = 8;
-            this.rtbMessages.Text = "";
+            this.rtbMessages.Location = new System.Drawing.Point(12, 270);
+            this.rtbMessages.Size = new System.Drawing.Size(666, 260);
+            this.rtbMessages.Font = new System.Drawing.Font("Consolas", 9F);
+            this.rtbMessages.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            this.rtbMessages.ForeColor = System.Drawing.Color.FromArgb(0, 255, 0);
+            this.rtbMessages.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbMessages.ReadOnly = true;
+
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(588, 537);
+            this.btnClear.Size = new System.Drawing.Size(90, 28);
+            this.btnClear.Text = "🗑️ Temizle";
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(108, 117, 125);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnClear.FlatAppearance.BorderSize = 0;
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+
             // 
             // MainForm
             // 
-            this.ClientSize = new System.Drawing.Size(605, 392);
-            this.Controls.Add(this.rtbMessages);
-            this.Controls.Add(this.btnSend);
-            this.Controls.Add(this.btnDisconnect);
-            this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.txtMessage);
+            this.ClientSize = new System.Drawing.Size(690, 575);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Controls.Add(this.pnlStatus);
+            this.Controls.Add(this.grpConnection);
+            this.Controls.Add(this.grpEncryption);
+            this.Controls.Add(this.lblKey);
             this.Controls.Add(this.txtKey);
-            this.Controls.Add(this.cmbCipher);
-            this.Controls.Add(this.txtPort);
-            this.Controls.Add(this.txtIp);
+            this.Controls.Add(this.grpMessage);
+            this.Controls.Add(this.rtbMessages);
+            this.Controls.Add(this.btnClear);
             this.Name = "MainForm";
-            this.Text = "Client - Şifreli Mesajlaşma";
+            this.Text = "🔒 Şifreli İstemci - AES | DES | RSA";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+
+            this.grpConnection.ResumeLayout(false);
+            this.grpConnection.PerformLayout();
+            this.grpEncryption.ResumeLayout(false);
+            this.grpEncryption.PerformLayout();
+            this.grpMessage.ResumeLayout(false);
+            this.grpMessage.PerformLayout();
+            this.pnlStatus.ResumeLayout(false);
+            this.pnlStatus.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -139,5 +313,18 @@
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.RichTextBox rtbMessages;
+        private System.Windows.Forms.ComboBox cmbMode;
+        private System.Windows.Forms.Label lblMode;
+        private System.Windows.Forms.GroupBox grpConnection;
+        private System.Windows.Forms.GroupBox grpEncryption;
+        private System.Windows.Forms.GroupBox grpMessage;
+        private System.Windows.Forms.Label lblIp;
+        private System.Windows.Forms.Label lblPort;
+        private System.Windows.Forms.Label lblCipher;
+        private System.Windows.Forms.Label lblKey;
+        private System.Windows.Forms.Panel pnlStatus;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.PictureBox picStatus;
+        private System.Windows.Forms.Button btnClear;
     }
 }
