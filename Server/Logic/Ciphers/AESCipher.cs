@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -34,7 +34,7 @@ namespace Server.Logic.Ciphers
                         }
                     }
                 }
-                catch { return "[Åžifre Ã‡Ã¶zme HatasÄ±]"; }
+                catch { return "[Þifre Çözme Hatasý]"; }
             }
         }
     }

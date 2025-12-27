@@ -32,6 +32,7 @@
             this.pnlStatusBar = new System.Windows.Forms.Panel();
             this.lblStatusText = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnSaveLog = new System.Windows.Forms.Button();
 
             this.grpSettings.SuspendLayout();
             this.grpLog.SuspendLayout();
@@ -149,6 +150,7 @@
             this.grpLog.Location = new System.Drawing.Point(12, 150);
             this.grpLog.Size = new System.Drawing.Size(560, 340);
             this.grpLog.Controls.Add(this.rtbMessages);
+            this.grpLog.Controls.Add(this.btnSaveLog);
             this.grpLog.Controls.Add(this.btnClear);
 
             // 
@@ -175,6 +177,20 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+
+            // 
+            // btnSaveLog
+            // 
+            this.btnSaveLog.Location = new System.Drawing.Point(340, 305);
+            this.btnSaveLog.Size = new System.Drawing.Size(100, 28);
+            this.btnSaveLog.Text = "Kaydet";
+            this.btnSaveLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveLog.BackColor = System.Drawing.Color.FromArgb(23, 162, 184);
+            this.btnSaveLog.ForeColor = System.Drawing.Color.White;
+            this.btnSaveLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSaveLog.FlatAppearance.BorderSize = 0;
+            this.btnSaveLog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveLog.Click += new System.EventHandler(this.btnSaveLog_Click);
 
             // 
             // pnlStatusBar - Status Bar
@@ -241,5 +257,6 @@
         private System.Windows.Forms.Panel pnlStatusBar;
         private System.Windows.Forms.Label lblStatusText;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnSaveLog;
     }
 }

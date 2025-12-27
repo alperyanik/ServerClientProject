@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Drawing;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Client.Logic;
@@ -245,8 +246,53 @@ namespace Client.Forms
                 txtKey.Text = $"🔐 Otomatik ({keyMethod} Korumalı)";
             }
         }
+
+        private void btnLoadFile_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Metin Dosyalari|*.txt|Tum Dosyalar|*.*";
+                ofd.Title = "Sifrelenecek Dosyayi Secin";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string content = File.ReadAllText(ofd.FileName, System.Text.Encoding.UTF8);
+                        txtMessage.Text = content;
+                        txtMessage.ForeColor = Color.Black;
+                        rtbMessages.AppendText($"[{DateTime.Now:HH:mm:ss}] Dosya yuklendi: {Path.GetFileName(ofd.FileName)}\n");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Dosya okuma hatasi: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void btnSaveLog_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Metin Dosyalari|*.txt|Tum Dosyalar|*.*";
+                sfd.Title = "Log Dosyasini Kaydet";
+                sfd.FileName = $"log_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        File.WriteAllText(sfd.FileName, rtbMessages.Text, System.Text.Encoding.UTF8);
+                        rtbMessages.AppendText($"[{DateTime.Now:HH:mm:ss}] Log kaydedildi: {Path.GetFileName(sfd.FileName)}\n");
+                        MessageBox.Show("Log basariyla kaydedildi!", "Basarili", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Dosya kaydetme hatasi: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }
-
-
-

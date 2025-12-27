@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using Server.Logic;
 
@@ -92,6 +93,29 @@ namespace Server.Forms
             if (isRunning)
                 server.StopServer();
         }
+
+        private void btnSaveLog_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Metin Dosyalari|*.txt|Tum Dosyalar|*.*";
+                sfd.Title = "Server Log Dosyasini Kaydet";
+                sfd.FileName = $"server_log_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        File.WriteAllText(sfd.FileName, rtbMessages.Text, System.Text.Encoding.UTF8);
+                        rtbMessages.AppendText($"[{DateTime.Now:HH:mm:ss}] Log kaydedildi: {Path.GetFileName(sfd.FileName)}\n");
+                        MessageBox.Show("Log basariyla kaydedildi!", "Basarili", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Dosya kaydetme hatasi: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }
-

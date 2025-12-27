@@ -10,8 +10,6 @@ namespace Server.Logic.Ciphers
     public static class ManualAESCipher
     {
         #region S-Box and Inverse S-Box
-
-        // AES S-Box
         private static readonly byte[] SBOX = {
             0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76,
             0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0,
@@ -30,8 +28,6 @@ namespace Server.Logic.Ciphers
             0xe1, 0xf8, 0x98, 0x11, 0x69, 0xd9, 0x8e, 0x94, 0x9b, 0x1e, 0x87, 0xe9, 0xce, 0x55, 0x28, 0xdf,
             0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16
         };
-
-        // AES Inverse S-Box
         private static readonly byte[] INV_SBOX = {
             0x52, 0x09, 0x6a, 0xd5, 0x30, 0x36, 0xa5, 0x38, 0xbf, 0x40, 0xa3, 0x9e, 0x81, 0xf3, 0xd7, 0xfb,
             0x7c, 0xe3, 0x39, 0x82, 0x9b, 0x2f, 0xff, 0x87, 0x34, 0x8e, 0x43, 0x44, 0xc4, 0xde, 0xe9, 0xcb,
@@ -68,23 +64,17 @@ namespace Server.Logic.Ciphers
         private static void InvShiftRows(byte[] state)
         {
             byte temp;
-
-            // Satır 1: 1 sağa kaydır (indeksler: 1, 5, 9, 13)
             temp = state[13];
             state[13] = state[9];
             state[9] = state[5];
             state[5] = state[1];
             state[1] = temp;
-
-            // Satır 2: 2 sağa kaydır (indeksler: 2, 6, 10, 14)
             temp = state[2];
             state[2] = state[10];
             state[10] = temp;
             temp = state[6];
             state[6] = state[14];
             state[14] = temp;
-
-            // Satır 3: 3 sağa kaydır (indeksler: 3, 7, 11, 15)
             temp = state[3];
             state[3] = state[7];
             state[7] = state[11];
@@ -190,11 +180,7 @@ namespace Server.Logic.Ciphers
         {
             byte[] state = new byte[16];
             Array.Copy(block, state, 16);
-
-            // İlk AddRoundKey (son round key ile)
             AddRoundKey(state, roundKeys[10]);
-
-            // 9 ana round (ters sırada)
             for (int round = 9; round >= 1; round--)
             {
                 InvShiftRows(state);
@@ -202,8 +188,6 @@ namespace Server.Logic.Ciphers
                 AddRoundKey(state, roundKeys[round]);
                 InvMixColumns(state);
             }
-
-            // Son round
             InvShiftRows(state);
             InvSubBytes(state);
             AddRoundKey(state, roundKeys[0]);

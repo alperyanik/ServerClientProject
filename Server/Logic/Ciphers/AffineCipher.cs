@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Text;
 
 namespace Server.Logic.Ciphers
@@ -25,12 +25,12 @@ namespace Server.Logic.Ciphers
             {
                 if ((a * x) % 26 == 1) return x;
             }
-            throw new Exception("Bu 'a' deÄŸerinin tersi yoktur (26 ile aralarÄ±nda asal deÄŸil).");
+            throw new Exception("Bu 'a' deðerinin tersi yoktur (26 ile aralarýnda asal deðil).");
         }
 
         public static string Encrypt(string input, int a, int b)
         {
-            if (!IsCoprime(a)) return "[Hata: 'a' sayÄ±sÄ± 26 ile aralarÄ±nda asal olmalÄ± (Ã–rn: 1,3,5,7,9...)]";
+            if (!IsCoprime(a)) return "[Hata: 'a' sayýsý 26 ile aralarýnda asal olmalý (Örn: 1,3,5,7,9...)]";
 
             StringBuilder sb = new StringBuilder();
             foreach (char c in input)
@@ -53,7 +53,7 @@ namespace Server.Logic.Ciphers
 
         public static string Decrypt(string input, int a, int b)
         {
-            if (!IsCoprime(a)) return "[Hata: GeÃ§ersiz Anahtar]";
+            if (!IsCoprime(a)) return "[Hata: Geçersiz Anahtar]";
 
             int aInverse = ModInverse(a); 
             StringBuilder sb = new StringBuilder();

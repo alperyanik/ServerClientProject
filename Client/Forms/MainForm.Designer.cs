@@ -41,6 +41,8 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.picStatus = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnLoadFile = new System.Windows.Forms.Button();
+            this.btnSaveLog = new System.Windows.Forms.Button();
 
             this.grpConnection.SuspendLayout();
             this.grpEncryption.SuspendLayout();
@@ -246,15 +248,30 @@
             this.grpMessage.Location = new System.Drawing.Point(12, 220);
             this.grpMessage.Size = new System.Drawing.Size(666, 75);
             this.grpMessage.Controls.Add(this.txtMessage);
+            this.grpMessage.Controls.Add(this.btnLoadFile);
             this.grpMessage.Controls.Add(this.btnSend);
 
             // 
             // txtMessage
             // 
             this.txtMessage.Location = new System.Drawing.Point(10, 30);
-            this.txtMessage.Size = new System.Drawing.Size(530, 30);
+            this.txtMessage.Size = new System.Drawing.Size(440, 30);
             this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+
+            // 
+            // btnLoadFile
+            // 
+            this.btnLoadFile.Location = new System.Drawing.Point(460, 28);
+            this.btnLoadFile.Size = new System.Drawing.Size(80, 33);
+            this.btnLoadFile.Text = "Dosya";
+            this.btnLoadFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadFile.BackColor = System.Drawing.Color.FromArgb(40, 167, 69);
+            this.btnLoadFile.ForeColor = System.Drawing.Color.White;
+            this.btnLoadFile.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLoadFile.FlatAppearance.BorderSize = 0;
+            this.btnLoadFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
 
             // 
             // btnSend
@@ -296,6 +313,20 @@
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 
             // 
+            // btnSaveLog
+            // 
+            this.btnSaveLog.Location = new System.Drawing.Point(490, 542);
+            this.btnSaveLog.Size = new System.Drawing.Size(90, 28);
+            this.btnSaveLog.Text = "Kaydet";
+            this.btnSaveLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveLog.BackColor = System.Drawing.Color.FromArgb(23, 162, 184);
+            this.btnSaveLog.ForeColor = System.Drawing.Color.White;
+            this.btnSaveLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSaveLog.FlatAppearance.BorderSize = 0;
+            this.btnSaveLog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveLog.Click += new System.EventHandler(this.btnSaveLog_Click);
+
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(690, 575);
@@ -308,6 +339,7 @@
             this.Controls.Add(this.txtKey);
             this.Controls.Add(this.grpMessage);
             this.Controls.Add(this.rtbMessages);
+            this.Controls.Add(this.btnSaveLog);
             this.Controls.Add(this.btnClear);
             this.Name = "MainForm";
             this.Text = "🔒 Şifreli İstemci - AES | DES | RSA";
@@ -351,5 +383,7 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.PictureBox picStatus;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnLoadFile;
+        private System.Windows.Forms.Button btnSaveLog;
     }
 }
