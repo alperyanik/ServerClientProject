@@ -34,15 +34,15 @@ namespace Server.Logic
                 {
                     listener = new TcpListener(IPAddress.Parse(ip), port);
                     listener.Start();
-                    AppendMessage($"[+] Server baþlatýldý: {ip}:{port}");
-                    AppendMessage($"[+] RSA Anahtarlarý (2048-bit) hazýr.");
-                    AppendMessage($"[+] ECC Anahtarlarý (NIST P-256) hazýr.");
+                    AppendMessage($"[+] Server baÅŸlatÄ±ldÄ±: {ip}:{port}");
+                    AppendMessage($"[+] RSA AnahtarlarÄ± (2048-bit) hazÄ±r.");
+                    AppendMessage($"[+] ECC AnahtarlarÄ± (NIST P-256) hazÄ±r.");
 
                     while (true)
                     {
                         TcpClient client = listener.AcceptTcpClient();
                         lock (clientLock) clients.Add(client);
-                        AppendMessage("[+] Yeni kullanýcý baðlandý!");
+                        AppendMessage("[+] Yeni kullanÄ±cÄ± baÄŸlandÄ±!");
 
                         Thread clientThread = new Thread(() => HandleClient(client));
                         clientThread.IsBackground = true;
@@ -51,7 +51,7 @@ namespace Server.Logic
                 }
                 catch (Exception ex)
                 {
-                    AppendMessage("[Hata] Server baþlatýlamadý: " + ex.Message);
+                    AppendMessage("[Hata] Server baÅŸlatÄ±lamadÄ±: " + ex.Message);
                 }
             });
             serverThread.IsBackground = true;
@@ -81,7 +81,7 @@ namespace Server.Logic
                         byte[] responseBytes = Encoding.UTF8.GetBytes(response);
                         stream.Write(responseBytes, 0, responseBytes.Length);
 
-                        AppendMessage("[Sistem] Ýstemciye RSA Public Key gönderildi.");
+                        AppendMessage("[Sistem] Ä°stemciye RSA Public Key gÃ¶nderildi.");
                         continue;
                     }
 
@@ -93,7 +93,7 @@ namespace Server.Logic
                         byte[] responseBytes = Encoding.UTF8.GetBytes(response);
                         stream.Write(responseBytes, 0, responseBytes.Length);
 
-                        AppendMessage("[Sistem] Ýstemciye ECC Public Key gönderildi.");
+                        AppendMessage("[Sistem] Ä°stemciye ECC Public Key gÃ¶nderildi.");
                         continue;
                     }
 
@@ -112,11 +112,11 @@ namespace Server.Logic
                             {
                                 sessionKey = decryptedKey;
                                 sessionAlgo = algo;
-                                AppendMessage($"[Sistem] RSA Handshake Baþarýlý! Ýstemci {algo} kullanacak.");
+                                AppendMessage($"[Sistem] RSA Handshake BaÅŸarÄ±lÄ±! Ä°stemci {algo} kullanacak.");
                             }
                             else
                             {
-                                AppendMessage($"[Hata] RSA þifre çözme baþarýsýz oldu.");
+                                AppendMessage($"[Hata] RSA ÅŸifre Ã§Ã¶zme baÅŸarÄ±sÄ±z oldu.");
                             }
                         }
                         catch (Exception ex)
@@ -141,11 +141,11 @@ namespace Server.Logic
                             {
                                 sessionKey = decryptedKey;
                                 sessionAlgo = algo;
-                                AppendMessage($"[Sistem] ECC Handshake Baþarýlý! Ýstemci {algo} kullanacak.");
+                                AppendMessage($"[Sistem] ECC Handshake BaÅŸarÄ±lÄ±! Ä°stemci {algo} kullanacak.");
                             }
                             else
                             {
-                                AppendMessage($"[Hata] ECC þifre çözme baþarýsýz oldu.");
+                                AppendMessage($"[Hata] ECC ÅŸifre Ã§Ã¶zme baÅŸarÄ±sÄ±z oldu.");
                             }
                         }
                         catch (Exception ex)
@@ -168,7 +168,7 @@ namespace Server.Logic
 
                             string decrypted = DecryptMessage(encryptedMsg, cipherType, key, sessionKey, sessionAlgo, isManual);
 
-                            string modeLabel = isManual ? "Manuel" : "Kütüphane";
+                            string modeLabel = isManual ? "Manuel" : "KÃ¼tÃ¼phane";
                             AppendMessage($"--------------------------------------------------");
                             AppendMessage($"[Gelen] {cipherType} ({modeLabel})");
                             AppendMessage($"?? {encryptedMsg}");
@@ -180,7 +180,7 @@ namespace Server.Logic
             }
             catch (Exception ex)
             {
-                AppendMessage("[!] Kullanýcý düþtü: " + ex.Message);
+                AppendMessage("[!] KullanÄ±cÄ± dÃ¼ÅŸtÃ¼: " + ex.Message);
             }
             finally
             {
@@ -197,7 +197,7 @@ namespace Server.Logic
                 {
                     case "Sezar":
                         if (int.TryParse(key, out int shift)) return CaesarCipher.Decrypt(input, shift);
-                        return "[Hata: Sezar anahtarý sayý olmalý]";
+                        return "[Hata: Sezar anahtarÄ± sayÄ± olmalÄ±]";
                     case "Vigenere": return VigenereCipher.Decrypt(input, key);
                     case "Substitution": return SubstitutionCipher.Decrypt(input, key);
                     case "Affine":
@@ -218,7 +218,7 @@ namespace Server.Logic
 
                     case "AES":
                         if (sessionKey == null || sessionAlgo != "AES")
-                            return "[Hata: Sunucuda AES anahtarý yok. El sýkýþma yapýlmadý.]";
+                            return "[Hata: Sunucuda AES anahtarÄ± yok. El sÄ±kÄ±ÅŸma yapÄ±lmadÄ±.]";
                         if (isManual)
                             return ManualAESCipher.Decrypt(input, sessionKey);
                         else
@@ -226,7 +226,7 @@ namespace Server.Logic
 
                     case "DES":
                         if (sessionKey == null || sessionAlgo != "DES")
-                            return "[Hata: Sunucuda DES anahtarý yok. El sýkýþma yapýlmadý.]";
+                            return "[Hata: Sunucuda DES anahtarÄ± yok. El sÄ±kÄ±ÅŸma yapÄ±lmadÄ±.]";
                         if (isManual)
                             return ManualDESCipher.Decrypt(input, sessionKey);
                         else
@@ -235,7 +235,7 @@ namespace Server.Logic
                     default: return input + " (Bilinmeyen Algoritma)";
                 }
             }
-            catch (Exception ex) { return $"[Çözme Hatasý: {ex.Message}]"; }
+            catch (Exception ex) { return $"[Ã‡Ã¶zme HatasÄ±: {ex.Message}]"; }
         }
 
         private void AppendMessage(string msg)

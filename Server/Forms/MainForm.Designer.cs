@@ -1,4 +1,4 @@
-﻿namespace Server.Forms
+namespace Server.Forms
 {
     partial class MainForm
     {
@@ -61,12 +61,12 @@
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(12, 10);
-            this.lblTitle.Text = "🖥️ Şifreleme Sunucusu";
+            this.lblTitle.Text = "Sifreleme Sunucusu";
 
             // 
             // grpSettings - Settings Group
             // 
-            this.grpSettings.Text = "⚙️ Sunucu Ayarları";
+            this.grpSettings.Text = "Sunucu Ayarlari";
             this.grpSettings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpSettings.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
             this.grpSettings.Location = new System.Drawing.Point(12, 60);
@@ -117,7 +117,7 @@
             // 
             this.btnStart.Location = new System.Drawing.Point(270, 42);
             this.btnStart.Size = new System.Drawing.Size(130, 30);
-            this.btnStart.Text = "▶️ Sunucuyu Başlat";
+            this.btnStart.Text = "Sunucuyu Baslat";
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.BackColor = System.Drawing.Color.FromArgb(40, 167, 69);
             this.btnStart.ForeColor = System.Drawing.Color.White;
@@ -131,7 +131,7 @@
             // 
             this.btnStop.Location = new System.Drawing.Point(410, 42);
             this.btnStop.Size = new System.Drawing.Size(130, 30);
-            this.btnStop.Text = "⏹️ Sunucuyu Durdur";
+            this.btnStop.Text = "Sunucuyu Durdur";
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.BackColor = System.Drawing.Color.FromArgb(220, 53, 69);
             this.btnStop.ForeColor = System.Drawing.Color.White;
@@ -144,7 +144,7 @@
             // 
             // grpLog - Log Group
             // 
-            this.grpLog.Text = "📋 İletişim Logları";
+            this.grpLog.Text = "Iletisim Loglari";
             this.grpLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpLog.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
             this.grpLog.Location = new System.Drawing.Point(12, 150);
@@ -169,7 +169,7 @@
             // 
             this.btnClear.Location = new System.Drawing.Point(450, 305);
             this.btnClear.Size = new System.Drawing.Size(100, 28);
-            this.btnClear.Text = "🗑️ Temizle";
+            this.btnClear.Text = "Temizle";
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(108, 117, 125);
             this.btnClear.ForeColor = System.Drawing.Color.White;
@@ -207,7 +207,7 @@
             this.lblStatusText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblStatusText.ForeColor = System.Drawing.Color.FromArgb(255, 165, 0);
             this.lblStatusText.Location = new System.Drawing.Point(12, 7);
-            this.lblStatusText.Text = "⏸️ Durum: Hazır - Başlatmak için butona tıklayın";
+            this.lblStatusText.Text = "Durum: Hazir - Baslatmak icin butona tiklayin";
 
             // 
             // lblStatus (kept for compatibility)
@@ -226,7 +226,7 @@
             this.Controls.Add(this.pnlStatusBar);
             this.Controls.Add(this.lblStatus);
             this.Name = "MainForm";
-            this.Text = "🖥️ Şifreli İletişim Sunucusu";
+            this.Text = "Sifreli Iletisim Sunucusu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 
             this.grpSettings.ResumeLayout(false);

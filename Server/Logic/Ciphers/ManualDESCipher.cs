@@ -4,8 +4,8 @@ using System.Text;
 namespace Server.Logic.Ciphers
 {
     /// <summary>
-    /// Manuel DES Implementasyonu - Eğitim Amaçlı (Server - Decrypt)
-    /// S-Box, Permütasyon tabloları ve 16 round Feistel yapısı içerir.
+    /// Manuel DES Implementasyonu - EÄŸitim AmaÃ§lÄ± (Server - Decrypt)
+    /// S-Box, PermÃ¼tasyon tablolarÄ± ve 16 round Feistel yapÄ±sÄ± iÃ§erir.
     /// </summary>
     public static class ManualDESCipher
     {
@@ -235,12 +235,12 @@ namespace Server.Logic.Ciphers
         #region Public API
 
         /// <summary>
-        /// Şifreli metni DES ile çözer (CBC modu, dinamik IV)
+        /// Åifreli metni DES ile Ã§Ã¶zer (CBC modu, dinamik IV)
         /// </summary>
         public static string Decrypt(string cipherText, byte[] key)
         {
             if (key.Length != 8)
-                throw new ArgumentException("DES anahtarı 8 byte olmalıdır.");
+                throw new ArgumentException("DES anahtarÄ± 8 byte olmalÄ±dÄ±r.");
 
             try
             {
@@ -280,7 +280,7 @@ namespace Server.Logic.Ciphers
             }
             catch
             {
-                return "[Manuel DES Çözme Hatası]";
+                return "[Manuel DES Ã‡Ã¶zme HatasÄ±]";
             }
         }
 

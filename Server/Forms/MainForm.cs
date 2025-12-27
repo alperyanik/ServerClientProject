@@ -17,12 +17,12 @@ namespace Server.Forms
             server = new ServerLogic(rtbMessages);
             btnStop.Enabled = false;
             
-            rtbMessages.AppendText("╔══════════════════════════════════════════════════════════════╗\n");
-            rtbMessages.AppendText("║  🖥️ Şifreli İletişim Sunucusu v2.0                           ║\n");
-            rtbMessages.AppendText("║  AES-128 | DES | RSA Hibrit Şifreleme                        ║\n");
-            rtbMessages.AppendText("║  Kütüphaneli ve Manuel Şifre Çözme Destekli                  ║\n");
-            rtbMessages.AppendText("╚══════════════════════════════════════════════════════════════╝\n\n");
-            rtbMessages.AppendText("ℹ️ Sunucuyu başlatmak için yukarıdaki butona tıklayın.\n");
+            rtbMessages.AppendText("================================================================\n");
+            rtbMessages.AppendText("  Sifreli Iletisim Sunucusu v2.0                              \n");
+            rtbMessages.AppendText("  AES-128 | DES | RSA Hibrit Sifreleme                        \n");
+            rtbMessages.AppendText("  Kutuphaneli ve Manuel Sifre Cozme Destekli                  \n");
+            rtbMessages.AppendText("================================================================\n\n");
+            rtbMessages.AppendText("Sunucuyu baslatmak icin yukaridaki butona tiklayin.\n");
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace Server.Forms
             string ip = txtIP.Text.Trim();
             if (!int.TryParse(txtPort.Text.Trim(), out int port))
             {
-                MessageBox.Show("⚠️ Port numarası geçersiz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Port numarasi gecersiz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -40,13 +40,13 @@ namespace Server.Forms
                 isRunning = true;
                 btnStart.Enabled = false;
                 btnStop.Enabled = true;
-                UpdateStatus($"▶️ Çalışıyor: {ip}:{port}", true);
-                rtbMessages.AppendText($"\n✅ Sunucu başlatıldı! ({ip}:{port})\n");
-                rtbMessages.AppendText("📡 İstemci bekleniyor...\n\n");
+                UpdateStatus($"Calisiyor: {ip}:{port}", true);
+                rtbMessages.AppendText($"\nSunucu baslatildi! ({ip}:{port})\n");
+                rtbMessages.AppendText("Istemci bekleniyor...\n\n");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Sunucu başlatılamadı!\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sunucu baslatilamadi!\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -60,12 +60,12 @@ namespace Server.Forms
                 isRunning = false;
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
-                UpdateStatus("⏹️ Durum: Durduruldu", false);
-                rtbMessages.AppendText("\n⏹️ Sunucu durduruldu.\n");
+                UpdateStatus("Durum: Durduruldu", false);
+                rtbMessages.AppendText("\nSunucu durduruldu.\n");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Sunucu durdurulurken hata oluştu!\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sunucu durdurulurken hata olustu!\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -85,7 +85,7 @@ namespace Server.Forms
         private void btnClear_Click(object sender, EventArgs e)
         {
             rtbMessages.Clear();
-            rtbMessages.AppendText("📋 Log temizlendi.\n");
+            rtbMessages.AppendText("Log temizlendi.\n");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

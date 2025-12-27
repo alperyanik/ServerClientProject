@@ -77,7 +77,7 @@ namespace Client.Logic.Ciphers
             int det = GetDeterminant(matrix);
             int detInv = ModInverse(det, 26);
 
-            if (detInv == -1) throw new Exception("Anahtarýn tersi yok (Determinant geçersiz).");
+            if (detInv == -1) throw new Exception("AnahtarÄ±n tersi yok (Determinant geÃ§ersiz).");
 
             int[,] adjugate = new int[n, n];
 
@@ -158,7 +158,7 @@ namespace Client.Logic.Ciphers
             }
             catch
             {
-                return "[Hata: Bu anahtar matematiksel olarak çözülemez!]";
+                return "[Hata: Bu anahtar matematiksel olarak Ã§Ã¶zÃ¼lemez!]";
             }
 
             StringBuilder sb = new StringBuilder();

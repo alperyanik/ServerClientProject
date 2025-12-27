@@ -39,7 +39,7 @@ namespace Client.Logic
                 client = new TcpClient();
                 client.Connect(ip, port);
                 stream = client.GetStream();
-                LogMessage($"Sunucuya baðlanýldý ({ip}:{port})");
+                LogMessage($"Sunucuya baÄŸlanÄ±ldÄ± ({ip}:{port})");
 
                 listenThread = new Thread(ListenForMessages);
                 listenThread.IsBackground = true;
@@ -57,7 +57,7 @@ namespace Client.Logic
             }
             catch (Exception ex)
             {
-                LogMessage("Baðlantý hatasý: " + ex.Message);
+                LogMessage("BaÄŸlantÄ± hatasÄ±: " + ex.Message);
                 return false;
             }
         }
@@ -80,7 +80,7 @@ namespace Client.Logic
                         if (parts.Length >= 3)
                         {
                             ServerPublicKey = parts[2];
-                            LogMessage("[SÝSTEM] Sunucu RSA Anahtarý alýndý ve kaydedildi.");
+                            LogMessage("[SÄ°STEM] Sunucu RSA AnahtarÄ± alÄ±ndÄ± ve kaydedildi.");
                         }
                         continue;
                     }
@@ -91,7 +91,7 @@ namespace Client.Logic
                         if (parts.Length >= 3)
                         {
                             ServerECCPublicKey = Convert.FromBase64String(parts[2]);
-                            LogMessage("[SÝSTEM] Sunucu ECC Anahtarý alýndý ve kaydedildi.");
+                            LogMessage("[SÄ°STEM] Sunucu ECC AnahtarÄ± alÄ±ndÄ± ve kaydedildi.");
                         }
                         continue;
                     }
@@ -101,7 +101,7 @@ namespace Client.Logic
             }
             catch
             {
-                LogMessage("Sunucu baðlantýsý koptu.");
+                LogMessage("Sunucu baÄŸlantÄ±sÄ± koptu.");
             }
         }
 
@@ -111,7 +111,7 @@ namespace Client.Logic
             {
                 stream?.Close();
                 client?.Close();
-                LogMessage("Baðlantý sonlandýrýldý.");
+                LogMessage("BaÄŸlantÄ± sonlandÄ±rÄ±ldÄ±.");
             }
             catch { }
         }
@@ -120,7 +120,7 @@ namespace Client.Logic
         {
             if (client == null || !client.Connected)
             {
-                LogMessage("Sunucuya baðlý deðil.");
+                LogMessage("Sunucuya baÄŸlÄ± deÄŸil.");
                 return;
             }
 
@@ -138,11 +138,11 @@ namespace Client.Logic
             {
                 byte[] data = Encoding.UTF8.GetBytes(packet);
                 stream.Write(data, 0, data.Length);
-                LogMessage($"Gönderildi ({SelectedCipher}): {encryptedMsg}");
+                LogMessage($"GÃ¶nderildi ({SelectedCipher}): {encryptedMsg}");
             }
             catch (Exception ex)
             {
-                LogMessage("Gönderme hatasý: " + ex.Message);
+                LogMessage("GÃ¶nderme hatasÄ±: " + ex.Message);
             }
         }
 
@@ -155,7 +155,7 @@ namespace Client.Logic
                 {
                     if (ServerECCPublicKey == null)
                     {
-                        LogMessage("Hata: Sunucu ECC Anahtarý henüz gelmedi! Biraz bekleyip tekrar deneyin.");
+                        LogMessage("Hata: Sunucu ECC AnahtarÄ± henÃ¼z gelmedi! Biraz bekleyip tekrar deneyin.");
                         return false;
                     }
 
@@ -166,14 +166,14 @@ namespace Client.Logic
                     byte[] data = Encoding.UTF8.GetBytes(packet);
                     stream.Write(data, 0, data.Length);
 
-                    LogMessage($"[SÝSTEM] Yeni {algo} anahtarý üretildi ve ECC ile sunucuya gönderildi.");
+                    LogMessage($"[SÄ°STEM] Yeni {algo} anahtarÄ± Ã¼retildi ve ECC ile sunucuya gÃ¶nderildi.");
                     return true;
                 }
                 else
                 {
                     if (string.IsNullOrEmpty(ServerPublicKey))
                     {
-                        LogMessage("Hata: Sunucu RSA Anahtarý henüz gelmedi! Biraz bekleyip tekrar deneyin.");
+                        LogMessage("Hata: Sunucu RSA AnahtarÄ± henÃ¼z gelmedi! Biraz bekleyip tekrar deneyin.");
                         return false;
                     }
 
@@ -184,13 +184,13 @@ namespace Client.Logic
                     byte[] data = Encoding.UTF8.GetBytes(packet);
                     stream.Write(data, 0, data.Length);
 
-                    LogMessage($"[SÝSTEM] Yeni {algo} anahtarý üretildi ve RSA ile sunucuya gönderildi.");
+                    LogMessage($"[SÄ°STEM] Yeni {algo} anahtarÄ± Ã¼retildi ve RSA ile sunucuya gÃ¶nderildi.");
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                LogMessage("Handshake Hatasý: " + ex.Message);
+                LogMessage("Handshake HatasÄ±: " + ex.Message);
                 return false;
             }
         }
@@ -233,19 +233,19 @@ namespace Client.Logic
 
                     case "Sezar":
                         if (int.TryParse(CipherKey, out int sShift)) return CaesarCipher.Encrypt(plainText, sShift);
-                        else { LogMessage("Hata: Sezar anahtarý sayý olmalý."); return null; }
+                        else { LogMessage("Hata: Sezar anahtarÄ± sayÄ± olmalÄ±."); return null; }
 
                     case "Vigenere": return VigenereCipher.Encrypt(plainText, CipherKey);
 
                     case "Substitution":
                         if (CipherKey.Length == 26) return SubstitutionCipher.Encrypt(plainText, CipherKey);
-                        else { LogMessage("Hata: Anahtar 26 karakter olmalý."); return null; }
+                        else { LogMessage("Hata: Anahtar 26 karakter olmalÄ±."); return null; }
 
                     case "Affine":
                         string[] parts = CipherKey.Split(',');
                         if (parts.Length == 2 && int.TryParse(parts[0], out int a) && int.TryParse(parts[1], out int b))
                             return AffineCipher.Encrypt(plainText, a, b);
-                        else { LogMessage("Hata: Format 'a,b' olmalý."); return null; }
+                        else { LogMessage("Hata: Format 'a,b' olmalÄ±."); return null; }
 
                     case "Playfair":
 
@@ -254,11 +254,11 @@ namespace Client.Logic
 
                     case "RailFence":
                         if (int.TryParse(CipherKey, out int rails) && rails > 1) return RailFenceCipher.Encrypt(plainText, rails);
-                        else { LogMessage("Hata: Ray sayýsý > 1 olmalý."); return null; }
+                        else { LogMessage("Hata: Ray sayÄ±sÄ± > 1 olmalÄ±."); return null; }
 
                     case "Route":
                         if (int.TryParse(CipherKey, out int rc) && rc > 0) return RouteCipher.Encrypt(plainText, rc);
-                        else { LogMessage("Hata: Sütun sayýsý pozitif olmalý."); return null; }
+                        else { LogMessage("Hata: SÃ¼tun sayÄ±sÄ± pozitif olmalÄ±."); return null; }
 
                     case "Columnar": return ColumnarTranspositionCipher.Encrypt(plainText, CipherKey);
 
@@ -268,7 +268,7 @@ namespace Client.Logic
                         return PolybiusCipher.Encrypt(plainText, CipherKey ?? "");
 
                     case "Hill":
-                        if (!HillCipher.IsKeyValid(CipherKey)) { LogMessage("Hill anahtarý geçersiz."); return null; }
+                        if (!HillCipher.IsKeyValid(CipherKey)) { LogMessage("Hill anahtarÄ± geÃ§ersiz."); return null; }
                         return HillCipher.Encrypt(plainText, CipherKey);
 
                     default: return plainText;
@@ -276,7 +276,7 @@ namespace Client.Logic
             }
             catch (Exception ex)
             {
-                LogMessage("Þifreleme Hatasý: " + ex.Message);
+                LogMessage("Åžifreleme HatasÄ±: " + ex.Message);
                 return null;
             }
         }

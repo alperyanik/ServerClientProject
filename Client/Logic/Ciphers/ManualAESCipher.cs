@@ -196,7 +196,7 @@ namespace Client.Logic.Ciphers
         public static string Encrypt(string plainText, byte[] key)
         {
             if (key.Length != 16)
-                throw new ArgumentException("AES-128 anahtarı 16 byte olmalıdır.");
+                throw new ArgumentException("AES-128 anahtarÄ± 16 byte olmalÄ±dÄ±r.");
 
             byte[][] roundKeys = KeyExpansion(key);
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);

@@ -259,12 +259,12 @@ namespace Client.Logic.Ciphers
         #region Public API
 
         /// <summary>
-        /// Metni DES ile şifreler (CBC modu, PKCS7 padding, dinamik IV)
+        /// Metni DES ile ÅŸifreler (CBC modu, PKCS7 padding, dinamik IV)
         /// </summary>
         public static string Encrypt(string plainText, byte[] key)
         {
             if (key.Length != 8)
-                throw new ArgumentException("DES anahtarı 8 byte olmalıdır.");
+                throw new ArgumentException("DES anahtarÄ± 8 byte olmalÄ±dÄ±r.");
 
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
 

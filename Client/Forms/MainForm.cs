@@ -10,8 +10,8 @@ namespace Client.Forms
     public partial class MainForm : Form
     {
         private ClientLogic clientLogic;
-        private string keyPlaceholder = "Anahtar (Sayı)";
-        private string messagePlaceholder = "Mesajınızı buraya yazın...";
+        private string keyPlaceholder = "Anahtar (Sayi)";
+        private string messagePlaceholder = "Mesajinizi buraya yazin...";
 
         public MainForm()
         {
@@ -20,10 +20,10 @@ namespace Client.Forms
             cmbCipher.Items.AddRange(new string[] { "Sezar", "Vigenere", "Substitution", "Affine","Playfair", "RailFence" , "Route" , "Columnar" , "Polybius" , "Hill" ,"AES" , "DES"});
             cmbCipher.SelectedIndex = 0;
 
-            cmbMode.Items.AddRange(new string[] { "📚 Kütüphane", "✋ Manuel" });
+            cmbMode.Items.AddRange(new string[] { "Kutuphane", "Manuel" });
             cmbMode.SelectedIndex = 0;
 
-            cmbKeyExchange.Items.AddRange(new string[] { "🔐 RSA", "🔷 ECC" });
+            cmbKeyExchange.Items.AddRange(new string[] { "RSA", "ECC" });
             cmbKeyExchange.SelectedIndex = 0;
             cmbKeyExchange.SelectedIndexChanged += CmbKeyExchange_SelectedIndexChanged;
 
@@ -37,10 +37,10 @@ namespace Client.Forms
             SetKeyPlaceholder(keyPlaceholder);
             SetMessagePlaceholder();
             
-            rtbMessages.AppendText("╔══════════════════════════════════════════════════════════════╗\n");
-            rtbMessages.AppendText("║  🔒 Şifreli İletişim İstemcisi v2.0                          ║\n");
-            rtbMessages.AppendText("║  AES-128 | DES | RSA | ECC Hibrit Şifreleme                  ║\n");
-            rtbMessages.AppendText("╚══════════════════════════════════════════════════════════════╝\n\n");
+            rtbMessages.AppendText("================================================================\n");
+            rtbMessages.AppendText("  Sifreli Iletisim Istemcisi v2.0                             \n");
+            rtbMessages.AppendText("  AES-128 | DES | RSA | ECC Hibrit Sifreleme                  \n");
+            rtbMessages.AppendText("================================================================\n\n");
         }
 
         #region Placeholder Methods
@@ -99,14 +99,14 @@ namespace Client.Forms
         {
             if (connected)
             {
-                lblStatus.Text = "🟢 Bağlı";
+                lblStatus.Text = "Bagli";
                 lblStatus.ForeColor = Color.FromArgb(40, 167, 69);
                 btnConnect.Enabled = false;
                 btnDisconnect.Enabled = true;
             }
             else
             {
-                lblStatus.Text = "🔴 Bağlantı Yok";
+                lblStatus.Text = "Baglanti Yok";
                 lblStatus.ForeColor = Color.FromArgb(255, 165, 0);
                 btnConnect.Enabled = true;
                 btnDisconnect.Enabled = false;
@@ -119,13 +119,13 @@ namespace Client.Forms
             clientLogic.Port = int.Parse(txtPort.Text);
             clientLogic.SelectedCipher = cmbCipher.SelectedItem.ToString();
             
-            // Placeholder değilse anahtarı al
+            // Placeholder degilse anahtari al
             clientLogic.CipherKey = (txtKey.ForeColor == Color.Gray) ? "" : txtKey.Text;
 
             if (clientLogic.ConnectToServer(clientLogic.IP, clientLogic.Port))
             {
                 UpdateConnectionStatus(true);
-                MessageBox.Show("✅ Sunucuya bağlanıldı!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sunucuya baglandi!", "Basarili", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -139,22 +139,22 @@ namespace Client.Forms
         {
             string cipher = cmbCipher.SelectedItem.ToString();
             
-            // Placeholder değilse anahtarı al
+            // Placeholder degilse anahtari al
             string key = (txtKey.ForeColor == Color.Gray) ? "" : txtKey.Text;
             
             string message = (txtMessage.ForeColor == Color.Gray) ? "" : txtMessage.Text;
 
             if (cipher == "Sezar" && !int.TryParse(key, out _))
             {
-                MessageBox.Show("⚠️ Sezar şifrelemesi için sadece SAYISAL anahtar giriniz!",
-                    "Anahtar Hatası", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sezar sifrelemesi icin sadece SAYISAL anahtar giriniz!",
+                    "Anahtar Hatasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (cipher == "Vigenere" && !Regex.IsMatch(key, @"^[a-zA-Z]+$"))
             {
-                MessageBox.Show("⚠️ Vigenere şifrelemesi için sadece HARF anahtar giriniz!",
-                    "Anahtar Hatası", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vigenere sifrelemesi icin sadece HARF anahtar giriniz!",
+                    "Anahtar Hatasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -169,7 +169,7 @@ namespace Client.Forms
 
             if (string.IsNullOrWhiteSpace(message))
             {
-                MessageBox.Show("⚠️ Gönderilecek mesaj boş olamaz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Gonderilecek mesaj bos olamaz!", "Uyari", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -181,7 +181,7 @@ namespace Client.Forms
         private void btnClear_Click(object sender, EventArgs e)
         {
             rtbMessages.Clear();
-            rtbMessages.AppendText("📋 Log temizlendi.\n");
+            rtbMessages.AppendText("Log temizlendi.\n");
         }
 
         private void cmbCipher_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,7 +193,7 @@ namespace Client.Forms
             if (selected == "AES" || selected == "DES")
             {
                 string keyMethod = cmbKeyExchange.SelectedIndex == 0 ? "RSA" : "ECC";
-                txtKey.Text = $"🔐 Otomatik ({keyMethod} Korumalı)";
+                txtKey.Text = $"Otomatik ({keyMethod} Korumali)";
                 txtKey.ForeColor = Color.Gray;
                 txtKey.Enabled = false;
                 txtKey.BackColor = Color.FromArgb(230, 255, 230);
@@ -213,23 +213,23 @@ namespace Client.Forms
                 lblKeyExchange.Visible = false;
 
                 if (selected == "Sezar")
-                    SetKeyPlaceholder("Anahtar (Sayı)");
+                    SetKeyPlaceholder("Anahtar (Sayi)");
                 else if (selected == "Vigenere")
                     SetKeyPlaceholder("Anahtar (Kelime)");
                 else if (selected == "Substitution")
-                    SetKeyPlaceholder("26 Harfli Alfabe Sırası");
+                    SetKeyPlaceholder("26 Harfli Alfabe Sirasi");
                 else if (selected == "Affine")
-                    SetKeyPlaceholder("a,b (Örn: 5,8)");
+                    SetKeyPlaceholder("a,b (Orn: 5,8)");
                 else if (selected == "Playfair")
-                    SetKeyPlaceholder("Anahtar Kelime (Örn: SECRET)");
+                    SetKeyPlaceholder("Anahtar Kelime (Orn: SECRET)");
                 else if (selected == "RailFence")
-                    SetKeyPlaceholder("Ray Sayısı (Örn: 3)");
+                    SetKeyPlaceholder("Ray Sayisi (Orn: 3)");
                 else if (selected == "Route")
-                    SetKeyPlaceholder("Sütun Sayısı (Örn: 4)");
+                    SetKeyPlaceholder("Sutun Sayisi (Orn: 4)");
                 else if (selected == "Columnar")
-                    SetKeyPlaceholder("Anahtar Kelime veya Sayı");
+                    SetKeyPlaceholder("Anahtar Kelime veya Sayi");
                 else if (selected == "Polybius")
-                    SetKeyPlaceholder("Anahtar Kelime (İsteğe Bağlı)");
+                    SetKeyPlaceholder("Anahtar Kelime (Istege Bagli)");
                 else if (selected == "Hill")
                     SetKeyPlaceholder("Tam Kare Uzunlukta Kelime");
             }
@@ -243,7 +243,7 @@ namespace Client.Forms
             if (selected == "AES" || selected == "DES")
             {
                 string keyMethod = cmbKeyExchange.SelectedIndex == 0 ? "RSA" : "ECC";
-                txtKey.Text = $"🔐 Otomatik ({keyMethod} Korumalı)";
+                txtKey.Text = $"Otomatik ({keyMethod} Korumali)";
             }
         }
 

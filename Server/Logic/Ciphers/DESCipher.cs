@@ -34,7 +34,7 @@ namespace Server.Logic.Ciphers
                         }
                     }
                 }
-                catch { return "[Þifre Çözme Hatasý]"; }
+                catch { return "[Åžifre Ã‡Ã¶zme HatasÄ±]"; }
             }
         }
     }

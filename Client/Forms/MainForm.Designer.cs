@@ -1,4 +1,4 @@
-﻿namespace Client.Forms
+namespace Client.Forms
 {
     partial class MainForm
     {
@@ -71,12 +71,12 @@
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(255, 165, 0);
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblStatus.Location = new System.Drawing.Point(12, 8);
-            this.lblStatus.Text = "🔴 Bağlantı Yok";
+            this.lblStatus.Text = "Baglanti Yok";
 
             // 
             // grpConnection - Connection Group
             // 
-            this.grpConnection.Text = "🌐 Bağlantı Ayarları";
+            this.grpConnection.Text = "Baglanti Ayarlari";
             this.grpConnection.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpConnection.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
             this.grpConnection.Location = new System.Drawing.Point(12, 45);
@@ -127,7 +127,7 @@
             // 
             this.btnConnect.Location = new System.Drawing.Point(210, 43);
             this.btnConnect.Size = new System.Drawing.Size(60, 27);
-            this.btnConnect.Text = "🔗 Bağlan";
+            this.btnConnect.Text = "Baglan";
             this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConnect.BackColor = System.Drawing.Color.FromArgb(40, 167, 69);
             this.btnConnect.ForeColor = System.Drawing.Color.White;
@@ -141,7 +141,7 @@
             // 
             this.btnDisconnect.Location = new System.Drawing.Point(275, 43);
             this.btnDisconnect.Size = new System.Drawing.Size(55, 27);
-            this.btnDisconnect.Text = "❌ Kes";
+            this.btnDisconnect.Text = "Kes";
             this.btnDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisconnect.BackColor = System.Drawing.Color.FromArgb(220, 53, 69);
             this.btnDisconnect.ForeColor = System.Drawing.Color.White;
@@ -153,7 +153,7 @@
             // 
             // grpEncryption - Encryption Group
             // 
-            this.grpEncryption.Text = "🔐 Şifreleme Ayarları";
+            this.grpEncryption.Text = "Sifreleme Ayarlari";
             this.grpEncryption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpEncryption.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
             this.grpEncryption.Location = new System.Drawing.Point(358, 45);
@@ -208,7 +208,7 @@
             this.lblKeyExchange.AutoSize = true;
             this.lblKeyExchange.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblKeyExchange.Location = new System.Drawing.Point(160, 70);
-            this.lblKeyExchange.Text = "Anahtar Dağıtımı:";
+            this.lblKeyExchange.Text = "Anahtar Dagitimi:";
             this.lblKeyExchange.Visible = false;
 
             // 
@@ -228,7 +228,7 @@
             this.lblKey.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblKey.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
             this.lblKey.Location = new System.Drawing.Point(12, 170);
-            this.lblKey.Text = "🔑 Anahtar:";
+            this.lblKey.Text = "Anahtar:";
 
             // 
             // txtKey
@@ -242,7 +242,7 @@
             // 
             // grpMessage - Message Group
             // 
-            this.grpMessage.Text = "💬 Mesaj";
+            this.grpMessage.Text = "Mesaj";
             this.grpMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpMessage.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
             this.grpMessage.Location = new System.Drawing.Point(12, 220);
@@ -278,7 +278,7 @@
             // 
             this.btnSend.Location = new System.Drawing.Point(550, 28);
             this.btnSend.Size = new System.Drawing.Size(105, 33);
-            this.btnSend.Text = "📤 Gönder";
+            this.btnSend.Text = "Gonder";
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.BackColor = System.Drawing.Color.FromArgb(0, 123, 255);
             this.btnSend.ForeColor = System.Drawing.Color.White;
@@ -303,7 +303,7 @@
             // 
             this.btnClear.Location = new System.Drawing.Point(588, 542);
             this.btnClear.Size = new System.Drawing.Size(90, 28);
-            this.btnClear.Text = "🗑️ Temizle";
+            this.btnClear.Text = "Temizle";
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(108, 117, 125);
             this.btnClear.ForeColor = System.Drawing.Color.White;
@@ -342,7 +342,7 @@
             this.Controls.Add(this.btnSaveLog);
             this.Controls.Add(this.btnClear);
             this.Name = "MainForm";
-            this.Text = "🔒 Şifreli İstemci - AES | DES | RSA";
+            this.Text = "Sifreli Istemci - AES | DES | RSA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 
             this.grpConnection.ResumeLayout(false);
