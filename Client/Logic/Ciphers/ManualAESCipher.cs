@@ -201,6 +201,11 @@ namespace Client.Logic.Ciphers
             byte[][] roundKeys = KeyExpansion(key);
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
 
+            byte[] iv = new byte[16];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(iv);
+            }
 
             int paddingLen = 16 - (plainBytes.Length % 16);
             byte[] padded = new byte[plainBytes.Length + paddingLen];
@@ -208,17 +213,27 @@ namespace Client.Logic.Ciphers
             for (int i = plainBytes.Length; i < padded.Length; i++)
                 padded[i] = (byte)paddingLen;
 
-
             byte[] encrypted = new byte[padded.Length];
+            byte[] previousBlock = iv;
+            
             for (int i = 0; i < padded.Length; i += 16)
             {
                 byte[] block = new byte[16];
                 Array.Copy(padded, i, block, 0, 16);
+                
+                for (int j = 0; j < 16; j++)
+                    block[j] ^= previousBlock[j];
+                
                 byte[] encBlock = EncryptBlock(block, roundKeys);
                 Array.Copy(encBlock, 0, encrypted, i, 16);
+                previousBlock = encBlock;
             }
 
-            return Convert.ToBase64String(encrypted);
+            byte[] result = new byte[iv.Length + encrypted.Length];
+            Array.Copy(iv, 0, result, 0, iv.Length);
+            Array.Copy(encrypted, 0, result, iv.Length, encrypted.Length);
+            
+            return Convert.ToBase64String(result);
         }
 
 

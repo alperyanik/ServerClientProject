@@ -259,7 +259,7 @@ namespace Client.Logic.Ciphers
         #region Public API
 
         /// <summary>
-        /// Metni DES ile şifreler (ECB modu, PKCS7 padding)
+        /// Metni DES ile şifreler (CBC modu, PKCS7 padding, dinamik IV)
         /// </summary>
         public static string Encrypt(string plainText, byte[] key)
         {
@@ -268,6 +268,11 @@ namespace Client.Logic.Ciphers
 
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
 
+            byte[] iv = new byte[8];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(iv);
+            }
 
             int paddingLen = 8 - (plainBytes.Length % 8);
             byte[] padded = new byte[plainBytes.Length + paddingLen];
@@ -275,17 +280,27 @@ namespace Client.Logic.Ciphers
             for (int i = plainBytes.Length; i < padded.Length; i++)
                 padded[i] = (byte)paddingLen;
 
-
             byte[] encrypted = new byte[padded.Length];
+            byte[] previousBlock = iv;
+            
             for (int i = 0; i < padded.Length; i += 8)
             {
                 byte[] block = new byte[8];
                 Array.Copy(padded, i, block, 0, 8);
+                
+                for (int j = 0; j < 8; j++)
+                    block[j] ^= previousBlock[j];
+                
                 byte[] encBlock = EncryptBlock(block, key);
                 Array.Copy(encBlock, 0, encrypted, i, 8);
+                previousBlock = encBlock;
             }
 
-            return Convert.ToBase64String(encrypted);
+            byte[] result = new byte[iv.Length + encrypted.Length];
+            Array.Copy(iv, 0, result, 0, iv.Length);
+            Array.Copy(encrypted, 0, result, iv.Length, encrypted.Length);
+            
+            return Convert.ToBase64String(result);
         }
 
 

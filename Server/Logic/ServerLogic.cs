@@ -17,11 +17,13 @@ namespace Server.Logic
         private readonly RichTextBox rtb;
 
         private RSACipher rsaCipher;
+        private ECCCipher eccCipher;
 
         public ServerLogic(RichTextBox rtbMessages)
         {
             rtb = rtbMessages;
             rsaCipher = new RSACipher();
+            eccCipher = new ECCCipher();
         }
 
         public void StartServer(string ip, int port)
@@ -34,6 +36,7 @@ namespace Server.Logic
                     listener.Start();
                     AppendMessage($"[+] Server başlatıldı: {ip}:{port}");
                     AppendMessage($"[+] RSA Anahtarları (2048-bit) hazır.");
+                    AppendMessage($"[+] ECC Anahtarları (NIST P-256) hazır.");
 
                     while (true)
                     {
@@ -82,6 +85,18 @@ namespace Server.Logic
                         continue;
                     }
 
+                    if (data.StartsWith("REQ_ECC_KEY|"))
+                    {
+                        byte[] eccPubKey = eccCipher.GetPublicKey();
+                        string response = "COMMAND|ECC_PUBLIC_KEY|" + Convert.ToBase64String(eccPubKey);
+
+                        byte[] responseBytes = Encoding.UTF8.GetBytes(response);
+                        stream.Write(responseBytes, 0, responseBytes.Length);
+
+                        AppendMessage("[Sistem] İstemciye ECC Public Key gönderildi.");
+                        continue;
+                    }
+
                     if (data.StartsWith("KEY_EXCHANGE|"))
                     {
                         try
@@ -97,7 +112,7 @@ namespace Server.Logic
                             {
                                 sessionKey = decryptedKey;
                                 sessionAlgo = algo;
-                                AppendMessage($"[Sistem] Handshake Başarılı! İstemci {algo} kullanacak.");
+                                AppendMessage($"[Sistem] RSA Handshake Başarılı! İstemci {algo} kullanacak.");
                             }
                             else
                             {
@@ -107,6 +122,35 @@ namespace Server.Logic
                         catch (Exception ex)
                         {
                             AppendMessage($"[Hata] Handshake paketi bozuk: {ex.Message}");
+                        }
+                        continue;
+                    }
+
+                    if (data.StartsWith("ECC_KEY_EXCHANGE|"))
+                    {
+                        try
+                        {
+                            string[] parts = data.Split('|');
+                            string algo = parts[1];
+                            string encryptedKeyBase64 = parts[2];
+                            byte[] encryptedBytes = Convert.FromBase64String(encryptedKeyBase64);
+
+                            byte[] decryptedKey = eccCipher.Decrypt(encryptedBytes);
+
+                            if (decryptedKey != null)
+                            {
+                                sessionKey = decryptedKey;
+                                sessionAlgo = algo;
+                                AppendMessage($"[Sistem] ECC Handshake Başarılı! İstemci {algo} kullanacak.");
+                            }
+                            else
+                            {
+                                AppendMessage($"[Hata] ECC şifre çözme başarısız oldu.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            AppendMessage($"[Hata] ECC Handshake paketi bozuk: {ex.Message}");
                         }
                         continue;
                     }

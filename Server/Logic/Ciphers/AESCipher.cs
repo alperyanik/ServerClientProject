@@ -7,22 +7,26 @@ namespace Server.Logic.Ciphers
 {
     public static class AESCipher
     {
-        // Basitlik için sabit IV. Gerçekte dinamik olmalı.
-        private static readonly byte[] IV = Encoding.UTF8.GetBytes("1234567890123456");
-
         public static string Decrypt(string cipherText, byte[] key)
         {
             using (Aes aes = Aes.Create())
             {
                 aes.Key = key;
-                aes.IV = IV;
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
 
                 try
                 {
-                    byte[] buffer = Convert.FromBase64String(cipherText);
-                    using (MemoryStream ms = new MemoryStream(buffer))
+                    byte[] fullData = Convert.FromBase64String(cipherText);
+                    
+                    byte[] iv = new byte[16];
+                    Array.Copy(fullData, 0, iv, 0, 16);
+                    aes.IV = iv;
+                    
+                    byte[] cipherBytes = new byte[fullData.Length - 16];
+                    Array.Copy(fullData, 16, cipherBytes, 0, cipherBytes.Length);
+                    
+                    using (MemoryStream ms = new MemoryStream(cipherBytes))
                     {
                         using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
                         {

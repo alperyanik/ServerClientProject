@@ -223,18 +223,30 @@ namespace Server.Logic.Ciphers
             try
             {
                 byte[][] roundKeys = KeyExpansion(key);
-                byte[] encrypted = Convert.FromBase64String(cipherText);
+                byte[] fullData = Convert.FromBase64String(cipherText);
+                
+                byte[] iv = new byte[16];
+                Array.Copy(fullData, 0, iv, 0, 16);
+                
+                byte[] encrypted = new byte[fullData.Length - 16];
+                Array.Copy(fullData, 16, encrypted, 0, encrypted.Length);
+                
                 byte[] decrypted = new byte[encrypted.Length];
+                byte[] previousBlock = iv;
 
                 for (int i = 0; i < encrypted.Length; i += 16)
                 {
                     byte[] block = new byte[16];
                     Array.Copy(encrypted, i, block, 0, 16);
                     byte[] decBlock = DecryptBlock(block, roundKeys);
+                    
+                    for (int j = 0; j < 16; j++)
+                        decBlock[j] ^= previousBlock[j];
+                    
                     Array.Copy(decBlock, 0, decrypted, i, 16);
+                    previousBlock = block;
                 }
 
-                // PKCS7 Padding kaldır
                 int paddingLen = decrypted[decrypted.Length - 1];
                 if (paddingLen > 0 && paddingLen <= 16)
                 {

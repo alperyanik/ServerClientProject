@@ -22,6 +22,10 @@ namespace Client.Forms
             cmbMode.Items.AddRange(new string[] { "📚 Kütüphane", "✋ Manuel" });
             cmbMode.SelectedIndex = 0;
 
+            cmbKeyExchange.Items.AddRange(new string[] { "🔐 RSA", "🔷 ECC" });
+            cmbKeyExchange.SelectedIndex = 0;
+            cmbKeyExchange.SelectedIndexChanged += CmbKeyExchange_SelectedIndexChanged;
+
             clientLogic = new ClientLogic(rtbMessages);
             
             txtKey.Enter += TxtKey_Enter;
@@ -34,7 +38,7 @@ namespace Client.Forms
             
             rtbMessages.AppendText("╔══════════════════════════════════════════════════════════════╗\n");
             rtbMessages.AppendText("║  🔒 Şifreli İletişim İstemcisi v2.0                          ║\n");
-            rtbMessages.AppendText("║  AES-128 | DES | RSA Hibrit Şifreleme                        ║\n");
+            rtbMessages.AppendText("║  AES-128 | DES | RSA | ECC Hibrit Şifreleme                  ║\n");
             rtbMessages.AppendText("╚══════════════════════════════════════════════════════════════╝\n\n");
         }
 
@@ -159,6 +163,7 @@ namespace Client.Forms
             if (cipher == "AES" || cipher == "DES")
             {
                 clientLogic.UseManualMode = cmbMode.SelectedItem.ToString().Contains("Manuel");
+                clientLogic.UseECCKeyExchange = cmbKeyExchange.SelectedItem.ToString().Contains("ECC");
             }
 
             if (string.IsNullOrWhiteSpace(message))
@@ -186,13 +191,16 @@ namespace Client.Forms
 
             if (selected == "AES" || selected == "DES")
             {
-                txtKey.Text = "🔐 Otomatik (RSA Korumalı)";
+                string keyMethod = cmbKeyExchange.SelectedIndex == 0 ? "RSA" : "ECC";
+                txtKey.Text = $"🔐 Otomatik ({keyMethod} Korumalı)";
                 txtKey.ForeColor = Color.Gray;
                 txtKey.Enabled = false;
                 txtKey.BackColor = Color.FromArgb(230, 255, 230);
                 
                 cmbMode.Visible = true;
                 lblMode.Visible = true;
+                cmbKeyExchange.Visible = true;
+                lblKeyExchange.Visible = true;
             }
             else
             {
@@ -200,6 +208,8 @@ namespace Client.Forms
                 txtKey.BackColor = Color.FromArgb(255, 255, 240);
                 cmbMode.Visible = false;
                 lblMode.Visible = false;
+                cmbKeyExchange.Visible = false;
+                lblKeyExchange.Visible = false;
 
                 if (selected == "Sezar")
                     SetKeyPlaceholder("Anahtar (Sayı)");
@@ -224,6 +234,16 @@ namespace Client.Forms
             }
 
             clientLogic.SelectedCipher = selected;
+        }
+
+        private void CmbKeyExchange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected = cmbCipher.SelectedItem?.ToString();
+            if (selected == "AES" || selected == "DES")
+            {
+                string keyMethod = cmbKeyExchange.SelectedIndex == 0 ? "RSA" : "ECC";
+                txtKey.Text = $"🔐 Otomatik ({keyMethod} Korumalı)";
+            }
         }
     }
 }

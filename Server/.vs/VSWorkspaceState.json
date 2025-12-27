@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Logic",
+    "\\Logic\\Ciphers"
   ],
   "SelectedNode": "\\Program.cs",
   "PreviewInSolutionExplorer": false

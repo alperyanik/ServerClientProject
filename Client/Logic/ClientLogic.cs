@@ -20,9 +20,12 @@ namespace Client.Logic
         public int Port { get; set; }
 
         public string ServerPublicKey { get; set; }
+        public byte[] ServerECCPublicKey { get; set; }
         private byte[] sessionKey;
         private string currentAlgo;
+        private bool currentKeyExchangeMethod = false;
         public bool UseManualMode { get; set; } = false;
+        public bool UseECCKeyExchange { get; set; } = false;
 
         public ClientLogic(RichTextBox logBox)
         {
@@ -44,6 +47,11 @@ namespace Client.Logic
 
                 byte[] reqData = Encoding.UTF8.GetBytes("REQ_PUB_KEY|");
                 stream.Write(reqData, 0, reqData.Length);
+
+                Thread.Sleep(100);
+
+                byte[] reqEccData = Encoding.UTF8.GetBytes("REQ_ECC_KEY|");
+                stream.Write(reqEccData, 0, reqEccData.Length);
 
                 return true;
             }
@@ -73,6 +81,17 @@ namespace Client.Logic
                         {
                             ServerPublicKey = parts[2];
                             LogMessage("[SİSTEM] Sunucu RSA Anahtarı alındı ve kaydedildi.");
+                        }
+                        continue;
+                    }
+
+                    if (message.StartsWith("COMMAND|ECC_PUBLIC_KEY|"))
+                    {
+                        string[] parts = message.Split('|');
+                        if (parts.Length >= 3)
+                        {
+                            ServerECCPublicKey = Convert.FromBase64String(parts[2]);
+                            LogMessage("[SİSTEM] Sunucu ECC Anahtarı alındı ve kaydedildi.");
                         }
                         continue;
                     }
@@ -132,22 +151,42 @@ namespace Client.Logic
         {
             try
             {
-                if (string.IsNullOrEmpty(ServerPublicKey))
+                if (UseECCKeyExchange)
                 {
-                    LogMessage("Hata: Sunucu RSA Anahtarı henüz gelmedi! Biraz bekleyip tekrar deneyin.");
-                    return false;
+                    if (ServerECCPublicKey == null)
+                    {
+                        LogMessage("Hata: Sunucu ECC Anahtarı henüz gelmedi! Biraz bekleyip tekrar deneyin.");
+                        return false;
+                    }
+
+                    byte[] encryptedKey = ECCCipher.Encrypt(keyBytes, ServerECCPublicKey);
+                    string b64Key = Convert.ToBase64String(encryptedKey);
+
+                    string packet = $"ECC_KEY_EXCHANGE|{algo}|{b64Key}";
+                    byte[] data = Encoding.UTF8.GetBytes(packet);
+                    stream.Write(data, 0, data.Length);
+
+                    LogMessage($"[SİSTEM] Yeni {algo} anahtarı üretildi ve ECC ile sunucuya gönderildi.");
+                    return true;
                 }
+                else
+                {
+                    if (string.IsNullOrEmpty(ServerPublicKey))
+                    {
+                        LogMessage("Hata: Sunucu RSA Anahtarı henüz gelmedi! Biraz bekleyip tekrar deneyin.");
+                        return false;
+                    }
 
-                byte[] encryptedKey = RSACipher.Encrypt(keyBytes, ServerPublicKey);
+                    byte[] encryptedKey = RSACipher.Encrypt(keyBytes, ServerPublicKey);
+                    string b64Key = Convert.ToBase64String(encryptedKey);
 
-                string b64Key = Convert.ToBase64String(encryptedKey);
+                    string packet = $"KEY_EXCHANGE|{algo}|{b64Key}";
+                    byte[] data = Encoding.UTF8.GetBytes(packet);
+                    stream.Write(data, 0, data.Length);
 
-                string packet = $"KEY_EXCHANGE|{algo}|{b64Key}";
-                byte[] data = Encoding.UTF8.GetBytes(packet);
-                stream.Write(data, 0, data.Length);
-
-                LogMessage($"[SİSTEM] Yeni {algo} anahtarı üretildi ve RSA ile sunucuya gönderildi.");
-                return true;
+                    LogMessage($"[SİSTEM] Yeni {algo} anahtarı üretildi ve RSA ile sunucuya gönderildi.");
+                    return true;
+                }
             }
             catch (Exception ex)
             {
@@ -163,10 +202,11 @@ namespace Client.Logic
                 switch (SelectedCipher)
                 {
                     case "AES":
-                        if (sessionKey == null || currentAlgo != "AES")
+                        if (sessionKey == null || currentAlgo != "AES" || currentKeyExchangeMethod != UseECCKeyExchange)
                         {
                             sessionKey = UseManualMode ? ManualAESCipher.GenerateRandomKey() : AESCipher.GenerateRandomKey();
                             currentAlgo = "AES";
+                            currentKeyExchangeMethod = UseECCKeyExchange;
                             if (!PerformHandshake("AES", sessionKey)) return null;
 
                             Thread.Sleep(50);
@@ -177,10 +217,11 @@ namespace Client.Logic
                             return AESCipher.Encrypt(plainText, sessionKey);
 
                     case "DES":
-                        if (sessionKey == null || currentAlgo != "DES")
+                        if (sessionKey == null || currentAlgo != "DES" || currentKeyExchangeMethod != UseECCKeyExchange)
                         {
                             sessionKey = UseManualMode ? ManualDESCipher.GenerateRandomKey() : DESCipher.GenerateRandomKey();
                             currentAlgo = "DES";
+                            currentKeyExchangeMethod = UseECCKeyExchange;
                             if (!PerformHandshake("DES", sessionKey)) return null;
                             Thread.Sleep(50);
                         }

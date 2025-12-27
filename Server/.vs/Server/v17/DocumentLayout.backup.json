@@ -7,6 +7,22 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\RSACipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Logic\\Ciphers\\RSACipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\ManualAESCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Logic\\Ciphers\\ManualAESCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\ServerLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Logic\\ServerLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\ManualDESCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Logic\\Ciphers\\ManualDESCipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
@@ -25,7 +41,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -45,7 +61,56 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RSACipher.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\RSACipher.cs",
+              "RelativeDocumentMoniker": "Logic\\Ciphers\\RSACipher.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\RSACipher.cs",
+              "RelativeToolTip": "Logic\\Ciphers\\RSACipher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T07:28:19.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ServerLogic.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\ServerLogic.cs",
+              "RelativeDocumentMoniker": "Logic\\ServerLogic.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\ServerLogic.cs",
+              "RelativeToolTip": "Logic\\ServerLogic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T07:17:55.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ManualDESCipher.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\ManualDESCipher.cs",
+              "RelativeDocumentMoniker": "Logic\\Ciphers\\ManualDESCipher.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\ManualDESCipher.cs",
+              "RelativeToolTip": "Logic\\Ciphers\\ManualDESCipher.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T07:16:58.4Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ManualAESCipher.cs",
+              "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\ManualAESCipher.cs",
+              "RelativeDocumentMoniker": "Logic\\Ciphers\\ManualAESCipher.cs",
+              "ToolTip": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Logic\\Ciphers\\ManualAESCipher.cs",
+              "RelativeToolTip": "Logic\\Ciphers\\ManualAESCipher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T07:16:29.018Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Microsoft.NET.Sdk.DefaultItems.Shared.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.Shared.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.Shared.targets",
@@ -57,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Server.csproj",
               "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\Server.csproj",
               "RelativeDocumentMoniker": "Server.csproj",
@@ -69,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\ms\u0131\\Desktop\\ServerClientProjesi\\ServerClientProject\\Server\\App.config",
               "RelativeDocumentMoniker": "App.config",

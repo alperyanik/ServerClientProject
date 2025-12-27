@@ -264,7 +264,7 @@ namespace Server.Logic.Ciphers
         #region Public API
 
         /// <summary>
-        /// Şifreli metni DES ile çözer
+        /// Şifreli metni DES ile çözer (CBC modu, dinamik IV)
         /// </summary>
         public static string Decrypt(string cipherText, byte[] key)
         {
@@ -273,19 +273,30 @@ namespace Server.Logic.Ciphers
 
             try
             {
-                byte[] encrypted = Convert.FromBase64String(cipherText);
+                byte[] fullData = Convert.FromBase64String(cipherText);
+                
+                byte[] iv = new byte[8];
+                Array.Copy(fullData, 0, iv, 0, 8);
+                
+                byte[] encrypted = new byte[fullData.Length - 8];
+                Array.Copy(fullData, 8, encrypted, 0, encrypted.Length);
+                
                 byte[] decrypted = new byte[encrypted.Length];
+                byte[] previousBlock = iv;
 
-                // Her 8 byte'lık bloğu çöz
                 for (int i = 0; i < encrypted.Length; i += 8)
                 {
                     byte[] block = new byte[8];
                     Array.Copy(encrypted, i, block, 0, 8);
                     byte[] decBlock = DecryptBlock(block, key);
+                    
+                    for (int j = 0; j < 8; j++)
+                        decBlock[j] ^= previousBlock[j];
+                    
                     Array.Copy(decBlock, 0, decrypted, i, 8);
+                    previousBlock = block;
                 }
 
-                // PKCS7 Padding kaldır
                 int paddingLen = decrypted[decrypted.Length - 1];
                 if (paddingLen > 0 && paddingLen <= 8)
                 {

@@ -28,6 +28,8 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.rtbMessages = new System.Windows.Forms.RichTextBox();
             this.lblMode = new System.Windows.Forms.Label();
+            this.cmbKeyExchange = new System.Windows.Forms.ComboBox();
+            this.lblKeyExchange = new System.Windows.Forms.Label();
             this.grpConnection = new System.Windows.Forms.GroupBox();
             this.grpEncryption = new System.Windows.Forms.GroupBox();
             this.grpMessage = new System.Windows.Forms.GroupBox();
@@ -153,11 +155,13 @@
             this.grpEncryption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpEncryption.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
             this.grpEncryption.Location = new System.Drawing.Point(358, 45);
-            this.grpEncryption.Size = new System.Drawing.Size(320, 85);
+            this.grpEncryption.Size = new System.Drawing.Size(320, 120);
             this.grpEncryption.Controls.Add(this.lblCipher);
             this.grpEncryption.Controls.Add(this.cmbCipher);
             this.grpEncryption.Controls.Add(this.lblMode);
             this.grpEncryption.Controls.Add(this.cmbMode);
+            this.grpEncryption.Controls.Add(this.lblKeyExchange);
+            this.grpEncryption.Controls.Add(this.cmbKeyExchange);
 
             // 
             // lblCipher
@@ -182,7 +186,7 @@
             // 
             this.lblMode.AutoSize = true;
             this.lblMode.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblMode.Location = new System.Drawing.Point(160, 25);
+            this.lblMode.Location = new System.Drawing.Point(10, 70);
             this.lblMode.Text = "Mod:";
             this.lblMode.Visible = false;
 
@@ -190,11 +194,30 @@
             // cmbMode
             // 
             this.cmbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMode.Location = new System.Drawing.Point(160, 45);
-            this.cmbMode.Size = new System.Drawing.Size(145, 23);
+            this.cmbMode.Location = new System.Drawing.Point(10, 88);
+            this.cmbMode.Size = new System.Drawing.Size(140, 23);
             this.cmbMode.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmbMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMode.Visible = false;
+
+            // 
+            // lblKeyExchange
+            // 
+            this.lblKeyExchange.AutoSize = true;
+            this.lblKeyExchange.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblKeyExchange.Location = new System.Drawing.Point(160, 70);
+            this.lblKeyExchange.Text = "Anahtar Dağıtımı:";
+            this.lblKeyExchange.Visible = false;
+
+            // 
+            // cmbKeyExchange
+            // 
+            this.cmbKeyExchange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKeyExchange.Location = new System.Drawing.Point(160, 88);
+            this.cmbKeyExchange.Size = new System.Drawing.Size(145, 23);
+            this.cmbKeyExchange.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmbKeyExchange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbKeyExchange.Visible = false;
 
             // 
             // lblKey
@@ -202,13 +225,13 @@
             this.lblKey.AutoSize = true;
             this.lblKey.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblKey.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
-            this.lblKey.Location = new System.Drawing.Point(12, 135);
+            this.lblKey.Location = new System.Drawing.Point(12, 170);
             this.lblKey.Text = "🔑 Anahtar:";
 
             // 
             // txtKey
             // 
-            this.txtKey.Location = new System.Drawing.Point(12, 155);
+            this.txtKey.Location = new System.Drawing.Point(12, 190);
             this.txtKey.Size = new System.Drawing.Size(666, 25);
             this.txtKey.Font = new System.Drawing.Font("Consolas", 10F);
             this.txtKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -220,7 +243,7 @@
             this.grpMessage.Text = "💬 Mesaj";
             this.grpMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpMessage.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
-            this.grpMessage.Location = new System.Drawing.Point(12, 185);
+            this.grpMessage.Location = new System.Drawing.Point(12, 220);
             this.grpMessage.Size = new System.Drawing.Size(666, 75);
             this.grpMessage.Controls.Add(this.txtMessage);
             this.grpMessage.Controls.Add(this.btnSend);
@@ -250,8 +273,8 @@
             // 
             // rtbMessages
             // 
-            this.rtbMessages.Location = new System.Drawing.Point(12, 270);
-            this.rtbMessages.Size = new System.Drawing.Size(666, 260);
+            this.rtbMessages.Location = new System.Drawing.Point(12, 305);
+            this.rtbMessages.Size = new System.Drawing.Size(666, 230);
             this.rtbMessages.Font = new System.Drawing.Font("Consolas", 9F);
             this.rtbMessages.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
             this.rtbMessages.ForeColor = System.Drawing.Color.FromArgb(0, 255, 0);
@@ -261,7 +284,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(588, 537);
+            this.btnClear.Location = new System.Drawing.Point(588, 542);
             this.btnClear.Size = new System.Drawing.Size(90, 28);
             this.btnClear.Text = "🗑️ Temizle";
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -315,6 +338,8 @@
         private System.Windows.Forms.RichTextBox rtbMessages;
         private System.Windows.Forms.ComboBox cmbMode;
         private System.Windows.Forms.Label lblMode;
+        private System.Windows.Forms.ComboBox cmbKeyExchange;
+        private System.Windows.Forms.Label lblKeyExchange;
         private System.Windows.Forms.GroupBox grpConnection;
         private System.Windows.Forms.GroupBox grpEncryption;
         private System.Windows.Forms.GroupBox grpMessage;
