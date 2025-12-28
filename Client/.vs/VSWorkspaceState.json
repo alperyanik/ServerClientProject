@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Logic",
+    "\\Logic\\Ciphers"
   ],
+  "SelectedNode": "\\Logic\\Ciphers\\ColumnarTransposition.cs",
   "PreviewInSolutionExplorer": false
 }

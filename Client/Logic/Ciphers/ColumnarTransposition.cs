@@ -2,17 +2,17 @@ using System;
 using System.Linq;
 using System.Text;
 
-namespace Client.Logic.Ciphers 
+namespace Client.Logic.Ciphers
 {
     public static class ColumnarTranspositionCipher
     {
         private static int[] GetColumnOrder(string key)
         {
             
-            
-            return key.Select((c, i) => new { Char = c, Index = i })
-                      .OrderBy(x => x.Char) 
-                      .Select(x => x.Index) 
+            return key.Select((c, i) => new { Char = char.ToUpperInvariant(c), Index = i })
+                      .OrderBy(x => x.Char)
+                      .ThenBy(x => x.Index)
+                      .Select(x => x.Index)
                       .ToArray();
         }
 
@@ -20,38 +20,22 @@ namespace Client.Logic.Ciphers
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(key)) return input;
 
-            
-
-            
             int columns = key.Length;
-            int rows = (int)Math.Ceiling((double)input.Length / columns);
-
             
+            int rows = (int)Math.Ceiling((double)input.Length / columns);
             int totalLen = rows * columns;
+            
             input = input.PadRight(totalLen, 'X');
 
-            char[,] grid = new char[rows, columns];
-            int index = 0;
-
-           
-            for (int r = 0; r < rows; r++)
-            {
-                for (int c = 0; c < columns; c++)
-                {
-                    grid[r, c] = input[index++];
-                }
-            }
-
-           
             int[] order = GetColumnOrder(key);
-
-            
             StringBuilder sb = new StringBuilder();
+
             foreach (int colIndex in order)
             {
                 for (int r = 0; r < rows; r++)
                 {
-                    sb.Append(grid[r, colIndex]);
+                    int index = r * columns + colIndex;
+                    sb.Append(input[index]);
                 }
             }
 
@@ -64,13 +48,13 @@ namespace Client.Logic.Ciphers
 
             int columns = key.Length;
             int rows = input.Length / columns;
+            if (input.Length % columns != 0) rows++;
+
             char[,] grid = new char[rows, columns];
 
-            
             int[] order = GetColumnOrder(key);
             int index = 0;
 
-            
             foreach (int colIndex in order)
             {
                 for (int r = 0; r < rows; r++)
@@ -80,7 +64,6 @@ namespace Client.Logic.Ciphers
                 }
             }
 
-           
             StringBuilder sb = new StringBuilder();
             for (int r = 0; r < rows; r++)
             {
@@ -90,7 +73,6 @@ namespace Client.Logic.Ciphers
                 }
             }
 
-           
             return sb.ToString().TrimEnd('X');
         }
     }
